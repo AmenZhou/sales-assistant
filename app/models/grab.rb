@@ -1,6 +1,6 @@
 class Grab
 require 'open-uri'
-  attr_accessor :title, :rating, :cuisine, :phone, :website, :address, :area
+  attr_accessor :title, :rating, :cuisine, :phone, :website, :address, :area, :state, :street, :zipcode
   def self.open_table
     url = 'http://www.opentable.com/promo.aspx?m=8&ref=14383&pid=69&gclid=COnP3-r7xcECFYlDaQodQTQAdg'
     html = Nokogiri::HTML(open(url))
@@ -51,6 +51,9 @@ require 'open-uri'
         grab.rating = html.css('.timeoutStarRating  span').attr('title').value
       end
       grab.address = html.css('.address p').text.squish
+      grab.zipcode = html.css('.address .postal-code').text
+      grab.street = html.css('.address .street-address').text
+      grab.state = html.css('.address .locality').text
       grab.phone = html.css('.venueDetails ul')[1].css('li p')[1].text.squish
       grab.website = html.css('.venueDetails ul')[1].css('li p')[2].text.squish
     end
@@ -102,7 +105,7 @@ require 'open-uri'
   def self.export_to_file(grabs, file_name_prefix)
     puts 'Export to a csv file'
     time = Time.now.strftime('%m-%d-%Y_%H:%M')
-    titles = %w(title rating address cuisine phone area website)
+    titles = %w(title rating cuisine phone area street state zipcode address website)
     File.open("lib/#{file_name_prefix}_#{time}.csv", 'w') do |f|
       titles.each do |t|
         f.write(t + '|')
