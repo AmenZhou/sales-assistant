@@ -1,0 +1,3 @@
+%h1 Sales Tools
+=table_for @categories, :table_html => { :class => "table table-hover table-bordered" } do |t|
+  -t.column :name, link_url: lambda { |category| category }

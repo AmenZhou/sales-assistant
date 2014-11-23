@@ -47,3 +47,27 @@ group :development, :test do
 end
 
 gem 'yelp'
+
+gem 'haml-rails'
+
+group :test do
+  gem 'rspec-rails'
+
+  gem 'factory_girl_rails'
+
+  gem 'rspec-its'
+
+  gem 'database_cleaner'
+end
+
+gem 'bootstrap-sass'
+
+gem 'devise', github: 'plataformatec/devise', branch: 'lm-rails-4-2'
+
+gem 'simple_form'
+
+gem 'table-for'
+
+gem 'mini_magick'
+
+gem 'carrierwave'
