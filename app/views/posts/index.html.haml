@@ -1,0 +1,10 @@
+%h3= @category.name
+-@posts.each do |post|
+  .row
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          = post.title
+      .panel-body
+        = post.content
+
