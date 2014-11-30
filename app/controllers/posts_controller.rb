@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_category
   def index
     @posts = @category.posts
+    @post = Post.new
   end
 
   def new
@@ -11,8 +12,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params.merge(user: current_user, category: @category))
     if @post.save
       @posts = @category.posts
-      render 'index', notice: 'Post Success'
-      #redirect_to category_posts_path(@category), notice: 'Post successful'
+      redirect_to action: 'index', notice: 'Post Success'
     else
       flash[:error] = @post.errors.full_messages.join(', ')
       render 'index'
@@ -26,6 +26,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :media_type, :image)
   end
 end

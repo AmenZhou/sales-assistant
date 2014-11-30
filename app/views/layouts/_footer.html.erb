@@ -1,12 +1,4 @@
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
 <div class="container-fluid">
-  <% if controller.controller_name == 'posts' and (controller.action_name == 'index' or controller.action_name == 'create') %>
-    <%= simple_form_for [@category, Post.new], html: {class: "col-md-offset-2 col-md-6"} do |f| %>
-    <div><h4>New Post</h4></div>
-      <%= f.input_field :title, input_html: { maxlength: 50 } %>
-      <%= f.input_field :content, as: :text, input_html: { maxlength: 1000 } %>
-      <%= f.button :submit, 'Post'%>
-    <% end %>
-  <% end %>
 </div>
 </nav>

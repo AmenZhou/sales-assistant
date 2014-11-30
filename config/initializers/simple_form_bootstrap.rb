@@ -4,11 +4,9 @@ SimpleForm.setup do |config|
     b.use :html5
     b.use :placeholder
     b.use :label
-    b.wrapper :controls, tag: 'div', class: 'col-lg-10 col-md-10 col-sm-10' do |ba|
-      ba.use :input
-      ba.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
-      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-    end
+    b.use :input
+    b.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
+    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end
 
   config.wrappers :prepend, tag: 'div', class: "control-group", error_class: 'error' do |b|
@@ -42,8 +40,8 @@ SimpleForm.setup do |config|
   # to learn about the different styles for forms and inputs,
   # buttons and other elements.
   config.default_wrapper = :bootstrap
-  config.button_class = 'btn btn-default'
+  config.button_class = 'btn btn-primary'
   config.error_notification_class = 'alert alert-danger'
-  config.label_class = 'control-label col-md-2 align-left'
+  config.label_class = 'control-label'
   config.input_class = 'form-control'
 end

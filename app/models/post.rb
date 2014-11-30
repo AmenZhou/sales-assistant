@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
   validates :user, :category, presence: true
 
   mount_uploader :image, ImageUploader
+
+  MediaType = %w(DJY EET NTD MAGZINE WEBSITE ELSE)
 end
