@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   resources :categories do
     resources :posts
   end
+  resources :upload_files do
+    post :create, on: :collection, :defaults => { :format => 'js' }
+  end
 end
