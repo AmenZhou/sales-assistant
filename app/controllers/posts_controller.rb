@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_category
   def index
-    @posts = @category.posts
+    @posts = @category.posts.order('updated_at desc')
     @post = Post.new
   end
 
