@@ -10,9 +10,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params.merge(user: current_user, category: @category))
+    params[:upload_file_ids].try(:each) {|id| @post.upload_files << UploadFile.find(id)}
+
     if @post.save
       @posts = @category.posts
-      redirect_to action: 'index', notice: 'Post Success'
+      flash[:notice] = 'Post Success'
+      redirect_to action: 'index'
     else
       flash[:error] = @post.errors.full_messages.join(', ')
       render 'index'

@@ -6,6 +6,12 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="exampleModalLabel">New Post</h4>
       </div>
+      <div class="modal-body">
+        <%= simple_form_for UploadFile.new, remote: true do |f| %>
+          <%= f.input :image %>
+          <%= f.button :submit, 'Upload File' %>
+        <% end %>
+      </div>
       <%= simple_form_for [@category, @post] do |f| %>
         <div class="modal-body">
           <%= f.input :title, input_html: { maxlength: 50} %>
@@ -17,12 +23,6 @@
           <%= f.button :submit, 'Submit' %>
         </div>
       <% end %>
-      <div class="modal-footer">
-        <%= simple_form_for UploadFile.new, remote: true do |f| %>
-          <%= f.input :image %>
-          <%= f.button :submit, 'Upload File' %>
-        <% end %>
-      </div>
       <div id='files'></div>
     </div>
   </div>

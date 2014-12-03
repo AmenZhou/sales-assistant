@@ -1,6 +1,6 @@
 <% if @file.new_record? %>
   alert("Failed to upload file:<%= j @file.errors.full_messages.join(', ').html_safe %>");
 <% else %>
-  $("#files").append("<%= j image_tag @file.image.url %>");
-  $('#new_post').append("<%= j hidden_field_tag 'upload_file_ids[]', @file %>");
+  $("#files").append("<%= j image_tag @file.image.thumb.url %>");
+  $('#new_post').append("<%= j hidden_field_tag 'upload_file_ids[]', @file.id %>");
 <% end %>
