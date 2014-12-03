@@ -1,0 +1,3 @@
+%li{class: 'list-group-item', id: "file-#{@file.id}"}
+  = image_tag @file.image.thumb.url
+  = link_to 'X', @file, method: :delete, remote: true
