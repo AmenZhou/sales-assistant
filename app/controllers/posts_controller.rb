@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_category
+  before_action :set_post, only: [:edit, :update]
+
   def index
     @posts = @category.posts.order('updated_at desc')
     @post = Post.new
@@ -22,7 +24,28 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update
+    if @post.update(post_params)
+      params[:upload_file_ids].try(:each) {|id| @post.upload_files << UploadFile.find(id)}
+      flash[:notice] = 'Update Success'
+      redirect_to action: 'index'
+    else
+      flash[:error] = @post.errors.full_messages.join(', ')
+      render 'index'
+    end
+  end
+
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def set_category
     @category = Category.find(params[:category_id])

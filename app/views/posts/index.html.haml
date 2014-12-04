@@ -1,9 +1,10 @@
 = render 'new_post'
+= render 'edit_post'
 .row
   .col-md-6
     %h3= @category.name
   .col-md-6
-    = button_tag 'New Post', class: "btn btn-primary align-right", data: { toggle: "modal", target: "#exampleModal", whatever: "@mdo" }
+    = button_tag 'New Post', class: "btn btn-primary align-right", data: { toggle: "modal", target: "#newPostModal", whatever: "@mdo" }
 
 -@posts.each do |post|
   .row
@@ -11,6 +12,7 @@
       .panel-heading
         %h3.panel-title
           = post.title
+          = link_to 'Edit', edit_category_post_path(id: post.id), remote: true, data: { toggle: "modal", target: "#editPostModal" }, class: 'align-right' if post.user == current_user
       .panel-body
         = post.content
         = render partial: 'upload_files', locals: { upload_files: post.upload_files }

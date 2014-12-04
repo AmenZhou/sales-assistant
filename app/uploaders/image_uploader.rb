@@ -24,7 +24,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   protected
 
   def image?(new_file)
-    byebug
     new_file.content_type.include? 'image'
   end
 end
