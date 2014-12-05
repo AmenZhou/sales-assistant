@@ -4,10 +4,13 @@ class PostsController < ApplicationController
 
   def index
     @posts = @category.posts.order('updated_at desc')
-    @post = Post.new
   end
 
   def new
+    @post = Post.new
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
