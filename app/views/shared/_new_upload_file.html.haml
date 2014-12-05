@@ -1,0 +1,5 @@
+%li{class: 'list-group-item', id: "file-#{file.try(:id)}"}
+  = file_icon(file)
+  = file.try(:image).try(:file).try(:filename)
+  = link_to 'X', file, method: :delete, remote: true
+  = link_to 'Download', file.try(:image).try(:url)

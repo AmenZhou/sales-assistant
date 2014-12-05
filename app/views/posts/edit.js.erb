@@ -1,7 +1,2 @@
-$('#editPostModal input[id="post_title"]').val("<%= @post.try(:title) %>")
-$('#editPostModal textarea[id="post_content"]').val("<%= @post.try(:content) %>")
-$('#editPostModal select[id="post_media_type"]').val("<%= @post.try(:media_type) %>")
-$('#editPostModal form[id="new_post"]').attr('action', "<%= category_post_path(category_id: @category.try(:id), id: @post.try(:id)) %>")
-$('#editPostModal form[id="new_post"]').append("<input type='hidden' name='_method', value='PUT' %>")
-$('#editPostModal form[id="new_post"]').append("<%= j hidden_field_tag :id, @post.id %>")
+$('#postModal .modal-content').html("<%= j render('post_form') %>")
 

@@ -1,4 +1,3 @@
-%li{class: 'list-group-item', id: "file-#{@file.id}"}
-  = file_icon(@file)
-  = @file.try(:image).try(:file).try(:filename)
-  = link_to 'X', @file, method: :delete, remote: true
+%ul.list-group
+  - upload_files.try(:each) do |file|
+    = render 'upload_file'
