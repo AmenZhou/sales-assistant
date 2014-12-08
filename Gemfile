@@ -26,6 +26,8 @@ group :test do
   gem 'database_cleaner'
   gem "guard-rspec"
   gem 'shoulda-matchers'
+  gem "capybara"
+  gem "poltergeist"
 end
 gem 'bootstrap-sass'
 gem 'devise', github: 'plataformatec/devise', branch: 'lm-rails-4-2'
