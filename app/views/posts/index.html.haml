@@ -11,7 +11,9 @@
       .panel-heading
         %h3.panel-title
           = post.title
-          = link_to 'Edit', edit_category_post_path(id: post.id), remote: true, data: { toggle: "modal", target: "#postModal" }, class: 'align-right' if post.user == current_user
+          - if post.user == current_user
+            = link_to 'Edit', edit_category_post_path(id: post.id), remote: true, data: { toggle: "modal", target: "#postModal" }, class: 'align-right'
+            = link_to 'Delete', category_post_path(id: post.id), method: :delete, date: { confirm: 'Are you sure?' }, class: 'align-right'
       .panel-body
         = post.content
         = render partial: 'upload_files', locals: { upload_files: post.upload_files }

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_category
-  before_action :set_post, only: [:edit, :update]
+  before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = @category.posts.order('updated_at desc')
@@ -18,7 +18,6 @@ class PostsController < ApplicationController
     params[:upload_file_ids].try(:each) {|id| @post.upload_files << UploadFile.try(:find, id)}
 
     if @post.save
-      @posts = @category.posts
       flash[:notice] = 'Post Success'
       redirect_to action: 'index'
     else
@@ -42,6 +41,12 @@ class PostsController < ApplicationController
       flash[:error] = @post.errors.full_messages.join(', ')
       render 'index'
     end
+  end
+
+  def destroy
+    @post.destroy
+    flash[:notice] = 'Delete Success'
+    redirect_to action: :index
   end
 
   private
