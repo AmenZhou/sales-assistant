@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params.merge(user: current_user, category: @category))
-    params[:upload_file_ids].try(:each) {|id| @post.upload_files << UploadFile.find(id)}
+    params[:upload_file_ids].try(:each) {|id| @post.upload_files << UploadFile.try(:find, id)}
 
     if @post.save
       @posts = @category.posts
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      params[:upload_file_ids].try(:each) {|id| @post.upload_files << UploadFile.find(id)}
+      params[:upload_file_ids].try(:each) {|id| @post.upload_files << UploadFile.try(:find, id)}
       flash[:notice] = 'Update Success'
       redirect_to action: 'index'
     else

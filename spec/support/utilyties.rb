@@ -1,13 +1,15 @@
-require 'spec_helper'
-include Warden::Test::Helpers
-Warden.test_mode!
-module FeatureHelpers
-  def create_logged_in_user
-    user = FactoryGirl.create(:user)
-    login(user)
-    user
+module WaitForAjax
+  def wait_for_ajax
+    Timeout.timeout(Capybara.default_wait_time) do
+      loop until finished_all_ajax_requests?
+    end
   end
-  def login(user)
-    login_as user, scope: :user
+
+  def finished_all_ajax_requests?
+    page.evaluate_script('jQuery.active').zero?
   end
+end
+
+RSpec.configure do |config|
+  config.include WaitForAjax, type: :feature
 end

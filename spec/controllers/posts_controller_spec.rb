@@ -25,16 +25,6 @@ RSpec.describe PostsController, :type => :controller do
       sign_in user
     end
 
-    after(:each) do
-      if Rails.env.test? || Rails.env.cucumber?
-        @document.try(:versions).try(:each) do |v|
-          store_path = File.dirname(File.dirname(v.document_file.url))
-          temp_path = v.document_file.cache_dir
-          FileUtils.rm_rf(Dir["#{Rails.root}/public/#{store_path}/[^.]*"])
-          FileUtils.rm_rf(Dir["#{temp_path}/[^.]*"])
-        end
-      end
-    end
 
     it "create a new post" do
       post :create, post: {title: 'Hello', content: 'Hellow World'}, category_id: category.id

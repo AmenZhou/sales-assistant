@@ -2,5 +2,5 @@
   alert("Failed to upload file:<%= j @file.errors.full_messages.join(', ').html_safe %>");
 <% else %>
   $("#file_list").append("<%= j render(partial: 'shared/new_upload_file', locals: {file: @file}) %>");
-  $('#post_form').append("<%= j hidden_field_tag 'upload_file_ids[]', @file.id %>");
+  $('#post_form').append("<%= j hidden_field_tag 'upload_file_ids[]', @file.id, id: "upload_file_id_#{@file.id}" %>");
 <% end %>
