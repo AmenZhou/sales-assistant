@@ -12,12 +12,16 @@
         %h3.panel-title
           = post.title
           - if post.user == current_user
-            = link_to 'Edit', edit_category_post_path(id: post.id), remote: true, data: { toggle: "modal", target: "#postModal" }, class: 'align-right'
-            = link_to 'Delete', category_post_path(id: post.id), method: :delete, date: { confirm: 'Are you sure?' }, class: 'align-right'
+            .align-right
+              = link_to 'Edit', edit_category_post_path(id: post.id), remote: true, data: { toggle: "modal", target: "#postModal" }
+              = link_to 'Delete', category_post_path(id: post.id), method: :delete, data: { confirm: 'Are you sure?' }
       .panel-body
         = post.content
         = render partial: 'upload_files', locals: { upload_files: post.upload_files }
       .panel-footer
-        = post.media_type
+        %span Media Type:
+        = link_to post.media_type, '#'
+        .align-right
+          %span Tags:
 
 

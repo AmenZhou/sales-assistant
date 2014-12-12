@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require vendor
 //= require jquery.remotipart
+//= require main
 //= require_tree .

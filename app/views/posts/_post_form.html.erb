@@ -14,9 +14,20 @@
     <%= f.input :title, input_html: { maxlength: 50} %>
     <%= f.input :content, input_html: { maxlength: 1000 } %>
     <%= f.input :media_type, collection: Post::MediaType, prompt: 'Select a media type...' %>
+    <%= render 'tags_field_form', f: f %>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     <%= f.button :submit, 'Submit' %>
   </div>
 <% end %>
+
+<script>
+  $('.add_fields').click(function(event) {
+    var regexp, time;
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    $(this).before($(this).data('fields').replace(regexp, time));
+    return event.preventDefault();
+  })
+</script>
