@@ -38,5 +38,10 @@ RSpec.describe PostsController, :type => :controller do
       post :create, post: {title: 'Hello', content: 'Hello World'}, category_id:category.id, upload_file_ids: [file.id, file2.id]
       assigns(:post).upload_files.should eq [file, file2]
     end
+
+    it "create a post with tags" do
+      post :create, post: {title: 'Hello', content: 'Hello World', tag_list: 'animal, plant'}, category_id:category.id
+      assigns(:post).tags.pluck(:name).should eq ['animal', 'plant']
+    end
   end
 end

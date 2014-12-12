@@ -4,5 +4,6 @@ class Post < ActiveRecord::Base
   has_many :upload_files, dependent: :destroy
   validates :user, :category, presence: true
 
+  acts_as_taggable
   MediaType = %w(DJY EET NTD MAGZINE WEBSITE ELSE)
 end

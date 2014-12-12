@@ -23,5 +23,6 @@
         = link_to post.media_type, '#'
         .align-right
           %span Tags:
+          = raw post.tag_list.map{|t| link_to t, '#'}.join(', ')
 
 

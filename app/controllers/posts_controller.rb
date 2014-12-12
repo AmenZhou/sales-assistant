@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @tag = @post.tags.build
     respond_to do |format|
       format.js
     end
@@ -27,6 +28,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @tags = @post.tags
     respond_to do |format|
       format.js
     end
@@ -60,6 +62,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :media_type)
+    params.require(:post).permit(:title, :content, :media_type, :tag_list)
   end
 end

@@ -38,3 +38,5 @@ gem 'carrierwave'
 gem 'arel', '6.0.0.beta2'
 gem "fog"
 gem 'remotipart', '~> 1.2'
+gem 'acts-as-taggable-on'
+
