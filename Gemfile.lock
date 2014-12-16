@@ -12,7 +12,7 @@ GIT
       warden (~> 1.2.3)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     CFPropertyList (2.2.8)
     actionmailer (4.2.0.beta1)
@@ -224,6 +224,7 @@ GEM
       nokogiri
       rbvmomi
     orm_adapter (0.5.0)
+    pg (0.17.1)
     poltergeist (1.5.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -378,6 +379,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
+  pg
   poltergeist
   rails (= 4.2.0.beta1)
   rails-html-sanitizer (~> 1.0)

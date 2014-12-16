@@ -16,3 +16,5 @@
 /tmp
 /lib/*.csv
 /public/*
+/config/local_env.yml
+/config/initializers/secret_token.rb 
