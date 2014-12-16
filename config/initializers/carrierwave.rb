@@ -1,7 +1,6 @@
 if Rails.env.test? or Rails.env.development?
   CarrierWave.configure do |config|
     config.storage = :file
-    config.enable_processing = false
   end
 else
   CarrierWave.configure do |config|
@@ -14,3 +13,4 @@ else
     config.fog_directory = 'sa_storage'
   end
 end
+CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
