@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :categories
-  resources :posts
+  resources :posts do
+    collection do
+      get :by_tag
+      get :by_username
+      get :by_media_type
+    end
+  end
   resources :upload_files do
     post :create, on: :collection, :defaults => { :format => 'js' }
   end
-
-  get 'posts_searches/by_tag', to: 'posts_searches#by_tag'
-  get 'posts_searches/by_username', to: 'posts_searches#by_username'
-  get 'posts_searches/by_media_type', to: 'posts_searches#by_media_type'
 end

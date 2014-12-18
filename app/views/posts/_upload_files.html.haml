@@ -1,0 +1,6 @@
+%ul.list-group
+  - upload_files.try(:each) do |file|
+    %li.list-group-item
+      = file_icon(file)
+      = file.try(:image).try(:file).try(:filename)
+      = link_to 'Download', file.try(:image).try(:url)

@@ -1,0 +1,8 @@
+= render 'post_modal'
+
+%h1 Tag Search Page
+%div{id: "tag_cloud"}
+  - tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class|
+    = link_to tag.name, by_tag_posts_path(tag: tag.name), class: css_class
+
+= render 'posts'
