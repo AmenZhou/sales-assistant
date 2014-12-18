@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 gem 'rails', '4.2.0.beta1'
@@ -39,4 +39,7 @@ gem 'arel', '6.0.0.beta2'
 gem "fog"
 gem 'remotipart', '~> 1.2'
 gem 'acts-as-taggable-on'
-
+group :production do
+  gem 'pg'
+  gem 'whenever'
+end
