@@ -9,9 +9,10 @@
   <% end %>
 </div>
 <%= render partial: 'shared/new_upload_files', locals: { upload_files: @post.try(:upload_files) } %>
-<%= simple_form_for [@category, @post], html: {id: 'post_form'} do |f| %>
+<%= simple_form_for @post, html: {id: 'post_form'} do |f| %>
   <div class="modal-body">
     <%= f.input :title, input_html: { maxlength: 50} %>
+    <%= f.association :category, label_method: :name, value_method: :id, prompt: 'Select a category' %>
     <%= f.input :content, input_html: { maxlength: 1000 } %>
     <%= f.input :media_type, collection: Post::MediaType, prompt: 'Select a media type...' %>
     <%= f.input :tag_list, input_html: { value: @post.tag_list.try(:join, ', ') } %>(separated by commas)
@@ -21,13 +22,3 @@
     <%= f.button :submit, 'Submit' %>
   </div>
 <% end %>
-
-<script>
-  $('.add_fields').click(function(event) {
-    var regexp, time;
-    time = new Date().getTime();
-    regexp = new RegExp($(this).data('id'), 'g');
-    $(this).before($(this).data('fields').replace(regexp, time));
-    return event.preventDefault();
-  })
-</script>

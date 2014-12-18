@@ -1,9 +1,8 @@
 class PostsController < ApplicationController
-  before_action :set_category
   before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
-    @posts = @category.posts.order('updated_at desc')
+    @posts = Post.order('updated_at desc')
   end
 
   def new
@@ -15,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params.merge(user: current_user, category: @category))
+    @post = Post.new(post_params.merge(user: current_user))
     params[:upload_file_ids].try(:each) {|id| @post.upload_files << UploadFile.try(:find, id)}
 
     if @post.save
@@ -57,11 +56,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def set_category
-    @category = Category.find(params[:category_id])
-  end
-
   def post_params
-    params.require(:post).permit(:title, :content, :media_type, :tag_list)
+    params.require(:post).permit(:title, :content, :media_type, :tag_list, :category_id)
   end
 end

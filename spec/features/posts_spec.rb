@@ -11,12 +11,12 @@ feature "Posts", :type => :feature do
 
   describe "new post" do
     before :each do
-      visit category_posts_path(category_id: category.id)
+      visit posts_path
     end
 
-    it "/category/:id/posts should has category name" do
-      expect(page).to have_content category.name
-    end
+    #it "/posts should has category name" do
+      #expect(page).to have_content category.name
+    #end
 
     it "click new post button should pop up a new post form", js: true do
       page.should have_content 'New Post'
@@ -67,6 +67,7 @@ feature "Posts", :type => :feature do
     it "create a new post with tags should success", js: true do
       click_link 'New Post'
       within('#post_form') do
+        select('Meeting Records', from: 'Category')
         fill_in 'post_title', with: 'Hello World'
         fill_in 'post_content', with: 'Hello World'
         select('EET', from: 'Media type')
@@ -80,9 +81,10 @@ feature "Posts", :type => :feature do
 
   describe "edit post" do
     before :each do
-      visit category_posts_path(category_id: category.id)
+      visit posts_path
       click_link 'New Post'
       within('#post_form') do
+        select('Meeting Records', from: 'Category')
         fill_in 'post_title', with: 'Hello World'
         fill_in 'post_content', with: 'Hello World'
         select('EET', from: 'Media type')
@@ -99,6 +101,7 @@ feature "Posts", :type => :feature do
 
     it "submit edit should success", js: true do
       within('#post_form') do
+        select('Meeting Records', from: 'Category')
         fill_in 'post_title', with: 'Good Day'
         fill_in 'post_content', with: 'Good Day'
         select('EET', from: 'Media type')
@@ -113,9 +116,10 @@ feature "Posts", :type => :feature do
 
   describe "delete post" do
     before :each do
-      visit category_posts_path(category_id: category.id)
+      visit posts_path
       click_link 'New Post'
       within('#post_form') do
+        select('Meeting Records', from: '*Category')
         fill_in 'post_title', with: 'Hello World'
         fill_in 'post_content', with: 'Hello World'
         select('EET', from: 'Media type')
