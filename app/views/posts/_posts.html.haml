@@ -1,20 +1,20 @@
 -@posts.try(:each) do |post|
-  .row
+  .col-md-4
     .panel.panel-default
       .panel-heading
         %h3.panel-title
           = post.title
           - if post.user == current_user
             .align-right
-              = link_to 'Edit', edit_post_path(post), remote: true, data: { toggle: "modal", target: "#postModal" }
+              = link_to 'Edit', edit_post_path(post)
               = link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }
-          %span.col-md-offset-4
+          %div.panel-head-line
             Category:
             = post.category.try(:name)
-          %span
+          %div.panel-head-line
             Author:
             = post.user.try(:email)
-          %span
+          %div.panel-head-line
             Updated Time
             = post.updated_at
       .panel-body

@@ -8,9 +8,6 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @tag = @post.tags.build
-    respond_to do |format|
-      format.js
-    end
   end
 
   def create
@@ -28,9 +25,6 @@ class PostsController < ApplicationController
 
   def edit
     @tags = @post.tags
-    respond_to do |format|
-      format.js
-    end
   end
 
   def update

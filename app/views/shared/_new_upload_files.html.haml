@@ -1,3 +1,0 @@
-%ul{class: 'list-group', id: 'file_list'}
-  - upload_files.try(:each) do |file|
-    = render partial: 'shared/new_upload_file', locals: {file: file}
