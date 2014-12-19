@@ -1,1 +1,6 @@
 %h1 Username Search Page
+.search-head-links
+  - User.pluck(:email).each do |email|
+    = link_to email, by_username_posts_path(username: email)
+
+= render partial: 'post', collection: @posts

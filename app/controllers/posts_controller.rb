@@ -45,13 +45,28 @@ class PostsController < ApplicationController
   end
 
   def by_tag
-    @posts = Post.tagged_with(params[:tag]) if params[:tag]
+    if params[:tag] == 'all'
+      @posts = Post.all
+    else
+      @posts = Post.tagged_with(params[:tag]) if params[:tag]
+    end
   end
 
   def by_username
+    if params[:username] == 'all'
+      @posts = Post.all
+    else
+      user = User.find_by_email(params[:username])
+      @posts = user.posts if user
+    end
   end
 
   def by_media_type
+    if params[:media_type] == 'all'
+      @posts = Post.all
+    else
+      @posts = Post.where(media_type: params[:media_type]) if params[:media_type]
+    end
   end
 
   private

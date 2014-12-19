@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :posts do
     collection do
-      get :by_tag
-      get :by_username
-      get :by_media_type
+      get 'by_tag/:tag', to: :by_tag, as: :by_tag
+      get 'by_username/:username', to: :by_username, as: :by_username, :constraints => { :username => /[^\/]+/ }
+      get 'by_media_type/:media_type', to: :by_media_type, as: :by_media_type
     end
   end
   resources :upload_files do

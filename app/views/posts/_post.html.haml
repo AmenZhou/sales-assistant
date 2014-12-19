@@ -12,7 +12,7 @@
           = post.category.try(:name)
         %div.panel-head-line
           Author:
-          = post.user.try(:email)
+          = link_to post.user.try(:email), by_username_posts_path(username: post.user.try(:email))
         %div.panel-head-line
           Updated Time
           = post.updated_at
@@ -21,7 +21,7 @@
       = render partial: 'upload_files', locals: { upload_files: post.upload_files }
     .panel-footer
       %span Media Type:
-      = link_to post.media_type, '#'
+      = link_to post.media_type, by_media_type_posts_path(media_type: post.media_type)
       .align-right
         %span Tags:
         = raw post.tag_list.map{|t| link_to t, by_tag_posts_path(tag: t)}.join(', ')
