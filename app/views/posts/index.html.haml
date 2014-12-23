@@ -3,4 +3,5 @@
     = render 'search_links_head'
   .col-md-6
     = link_to 'New Post', new_post_path, class: "btn btn-primary align-right"
-= render partial: 'post', collection: @posts
+#posts_list
+  = render partial: 'post', collection: @posts

@@ -17,4 +17,5 @@
 //= require vendor
 //= require jquery.remotipart
 //= require main
+//= require masonry/jquery.masonry
 //= require_tree .
