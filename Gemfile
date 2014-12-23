@@ -35,7 +35,7 @@ gem 'simple_form'
 gem 'table-for'
 gem 'mini_magick'
 gem 'carrierwave'
-gem 'arel', '6.0.0.beta2'
+gem 'arel'
 gem "fog"
 gem 'remotipart', '~> 1.2'
 gem 'acts-as-taggable-on'

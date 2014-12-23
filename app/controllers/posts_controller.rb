@@ -77,6 +77,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def by_quick_search
+    if params[:query]
+      @posts = Post.by_quick_search(params[:query])
+    end
+  end
+
   private
 
   def set_post

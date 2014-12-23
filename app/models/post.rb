@@ -6,4 +6,6 @@ class Post < ActiveRecord::Base
 
   acts_as_taggable
   MediaType = %w(DJY EET NTD MAGZINE WEBSITE ELSE)
+
+  scope :by_quick_search, ->(query) { joins(:upload_files).where('title like :query OR content like :query OR upload_files.image like :query', query: "%#{query}%") }
 end

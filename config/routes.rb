@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'by_username/:username', to: :by_username, as: :by_username, :constraints => { :username => /[^\/]+/ }
       get 'by_media_type/:media_type', to: :by_media_type, as: :by_media_type
       get 'by_category/:category', to: :by_category, as: :by_category
+      get 'by_quick_search', to: :by_quick_search, as: :by_quick_search
     end
   end
   resources :upload_files do

@@ -371,7 +371,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
-  arel (= 6.0.0.beta2)
+  arel
   bootstrap-sass
   byebug
   capybara
