@@ -9,4 +9,5 @@
       %li
         = link_to mt, by_media_type_posts_path(mt)
 
-= render partial: 'post', collection: @posts
+#posts_list
+  = render partial: 'post', collection: @posts

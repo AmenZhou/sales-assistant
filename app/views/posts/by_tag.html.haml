@@ -9,4 +9,5 @@
       %li
         = link_to tag.name, by_tag_posts_path(tag.name), class: css_class
 
-= render partial: 'post', collection: @posts
+#posts_list
+  = render partial: 'post', collection: @posts

@@ -9,4 +9,5 @@
       %li
         = link_to email, by_username_posts_path(username: email)
 
-= render partial: 'post', collection: @posts
+#posts_list
+  = render partial: 'post', collection: @posts
