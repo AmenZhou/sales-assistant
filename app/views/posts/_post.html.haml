@@ -9,7 +9,7 @@
             = link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }
         %div.panel-head-line
           Category:
-          = post.category.try(:name)
+          = link_to post.category.try(:name), by_category_posts_path(category: post.category.try(:name))
         %div.panel-head-line
           Author:
           = link_to post.user.try(:email), by_username_posts_path(username: post.user.try(:email))

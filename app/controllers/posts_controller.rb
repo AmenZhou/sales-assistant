@@ -48,7 +48,7 @@ class PostsController < ApplicationController
     if params[:tag] == 'all'
       @posts = Post.all
     else
-      @posts = Post.tagged_with(params[:tag]) if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
     end
   end
 
@@ -65,7 +65,15 @@ class PostsController < ApplicationController
     if params[:media_type] == 'all'
       @posts = Post.all
     else
-      @posts = Post.where(media_type: params[:media_type]) if params[:media_type]
+      @posts = Post.where(media_type: params[:media_type])
+    end
+  end
+
+  def by_category
+    if params[:category] == 'all'
+      @posts = Post.all
+    else
+      @posts = Post.joins(:category).where(categories: {name: params[:category]} )
     end
   end
 
