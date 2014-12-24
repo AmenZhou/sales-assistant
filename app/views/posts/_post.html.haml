@@ -18,7 +18,7 @@
           = post.updated_at
     .panel-body
       = post.content
-      = render partial: 'upload_files', locals: { upload_files: post.upload_files }
+      = render partial: 'posts/upload_files', locals: { upload_files: post.upload_files }
     .panel-footer
       %span Media Type:
       = link_to post.media_type, by_media_type_posts_path(media_type: post.media_type)

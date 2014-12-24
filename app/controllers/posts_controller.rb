@@ -46,40 +46,40 @@ class PostsController < ApplicationController
 
   def by_tag
     if params[:tag] == 'all'
-      @posts = Post.all
+      @posts = Post.order('updated_at desc')
     else
-      @posts = Post.tagged_with(params[:tag])
+      @posts = Post.tagged_with(params[:tag]).order('updated_at desc')
     end
   end
 
   def by_username
     if params[:username] == 'all'
-      @posts = Post.all
+      @posts = Post.order('updated_at desc')
     else
       user = User.find_by_email(params[:username])
-      @posts = user.posts if user
+      @posts = user.posts.order('updated_at desc') if user
     end
   end
 
   def by_media_type
     if params[:media_type] == 'all'
-      @posts = Post.all
+      @posts = Post.order('updated_at desc')
     else
-      @posts = Post.where(media_type: params[:media_type])
+      @posts = Post.where(media_type: params[:media_type]).order('updated_at desc')
     end
   end
 
   def by_category
     if params[:category] == 'all'
-      @posts = Post.all
+      @posts = Post.order('updated_at desc')
     else
-      @posts = Post.joins(:category).where(categories: {name: params[:category]} )
+      @posts = Post.joins(:category).where(categories: {name: params[:category]} ).order('updated_at desc')
     end
   end
 
   def by_quick_search
     if params[:query]
-      @posts = Post.by_quick_search(params[:query])
+      @posts = Post.by_quick_search(params[:query]).order('updated_at desc')
     end
   end
 
