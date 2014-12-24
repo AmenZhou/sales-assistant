@@ -5,5 +5,5 @@ class Post < ActiveRecord::Base
   validates :user, :category, presence: true
 
   acts_as_taggable
-  MediaType = %w(DJY EET NTD MAGZINE WEBSITE ELSE)
+  MediaType = %w(中文大紀元 英文大紀元 新唐人 雜誌 網站 亞洲美食 其他)
 end
