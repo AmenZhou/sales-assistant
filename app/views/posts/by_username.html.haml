@@ -1,0 +1,13 @@
+%h1 Username Search Page
+.row
+  .col-md-6
+    = render 'search_links_head'
+.row
+  %ol.breadcrumb
+    Usernames
+    - User.pluck(:email).each do |email|
+      %li
+        = link_to email, by_username_posts_path(username: email)
+
+#posts_list
+  = render partial: 'post', collection: @posts

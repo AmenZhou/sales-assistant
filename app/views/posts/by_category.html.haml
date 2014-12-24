@@ -1,0 +1,13 @@
+%h1 Category Search Page
+.row
+  .col-md-6
+    = render 'search_links_head'
+.row
+  %ol.breadcrumb
+    Categories
+    - Category.pluck(:name).each do |c|
+      %li
+        = link_to c, by_category_posts_path(category: c)
+
+#posts_list
+  = render partial: 'post', collection: @posts

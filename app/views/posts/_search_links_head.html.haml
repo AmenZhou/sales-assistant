@@ -1,0 +1,12 @@
+%ol.breadcrumb
+  Search by
+  %li
+    = link_to 'Category', by_category_posts_path(category: 'all')
+  %li
+    = link_to 'Tag', by_tag_posts_path(tag: 'all')
+  %li
+    = link_to 'Media Type', by_media_type_posts_path(media_type: 'all')
+  %li
+    = link_to 'Username', by_username_posts_path(username: 'all')
+  %li
+    = link_to 'Complex Condition', by_quick_search_posts_path

@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails-html-sanitizer', '~> 1.0'
 group :development, :test do
+  gem 'faker'
   gem 'byebug'
   gem 'web-console', '~> 2.0.0.beta2'
   gem 'spring'
@@ -19,7 +20,6 @@ end
 gem 'yelp'
 gem 'haml-rails'
 group :test do
-  gem 'faker'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'rspec-its'
@@ -35,11 +35,13 @@ gem 'simple_form'
 gem 'table-for'
 gem 'mini_magick'
 gem 'carrierwave'
-gem 'arel', '6.0.0.beta2'
+gem 'arel'
 gem "fog"
 gem 'remotipart', '~> 1.2'
 gem 'acts-as-taggable-on'
 gem 'thin'
+gem 'masonry-rails'
+gem 'jquery-turbolinks'
 group :production do
   gem 'pg'
   gem 'whenever'

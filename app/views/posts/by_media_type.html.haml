@@ -1,0 +1,13 @@
+%h1 Media Type Search Page
+.row
+  .col-md-6
+    = render 'search_links_head'
+.row
+  %ol.breadcrumb
+    Media Types
+    - Post::MediaType.each do |mt|
+      %li
+        = link_to mt, by_media_type_posts_path(mt)
+
+#posts_list
+  = render partial: 'post', collection: @posts
