@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   resources :upload_files do
     post :create, on: :collection, :defaults => { :format => 'js' }
   end
+
+  namespace :mine do
+    resource :profile, controller: :profile
+  end
 end

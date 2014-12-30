@@ -28,8 +28,19 @@
   }
 }
 
-.search-head-links {
-  font-size: 18px;
-  margin: 10px;
+#header {
+  .search-head-links {
+    font-size: 18px;
+    margin: 10px;
+    margin-top: 20px;
+  }
+
+  .navbar-right {
+    font-size: 18px;
+  }
+}
+
+.user-profile {
   margin-top: 20px;
+  font-size: 18px;
 }

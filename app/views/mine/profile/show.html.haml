@@ -1,0 +1,17 @@
+%h1= (current_user.username || current_user.email) + "'s Profile"
+.user-profile
+  .row
+    .col-md-2
+      Email:
+    .col-md-6
+      = current_user.email
+  .row
+    .col-md-2
+      User Name:
+    .col-md-6
+      = current_user.username
+  .row
+    .col-md-2
+      Role:
+    .col-md-6
+      = current_user.role
