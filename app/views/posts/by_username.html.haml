@@ -10,4 +10,5 @@
         = link_to email, by_username_posts_path(username: email)
 
 #posts_list
-  = rendeV partial: 'post', collection: @posts
+  = render partial: 'post', collection: @posts
+= will_paginate @posts
