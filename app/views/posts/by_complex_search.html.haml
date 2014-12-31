@@ -1,0 +1,14 @@
+%h1 Search Page
+.row
+  .col-md-6
+    = render 'search_links_head'
+.row
+  = simple_form_for @post_search, url: by_complex_search_posts_path, method: :get, html: {class: 'form-inline'} do |f|
+    = f.input :title
+    = f.input :category_id, collection: Category.all, prompt: 'Select a Category ...'
+    = f.input :media_type, collection: Post::MediaType, prompt: 'Select a Media Type'
+    = f.button :submit
+
+#posts_list
+  = render partial: 'post', collection: @posts
+= will_paginate @posts

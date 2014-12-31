@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get 'by_media_type/:media_type', to: :by_media_type, as: :by_media_type
       get 'by_category/:category', to: :by_category, as: :by_category
       get 'by_quick_search', to: :by_quick_search, as: :by_quick_search
+      get 'by_complex_search', to: :by_complex_search, as: :by_complex_search
     end
   end
   resources :upload_files do

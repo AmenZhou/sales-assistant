@@ -78,9 +78,22 @@ class PostsController < ApplicationController
   end
 
   def by_quick_search
-    if params[:query]
-      @posts = Post.by_quick_search(params[:query]).order('updated_at desc').page(params[:page])
+   if params[:query]
+     @posts = Post.by_quick_search(params[:query]).order('updated_at desc')
+   end
+    @posts ||= Post.none
+    @posts = @posts.page(params[:page])
+  end
+
+  def by_complex_search
+    if params[:post_search]
+      @post_search = PostSearch.new(post_search_params)
+      @posts = @post_search.search
+    else
+      @post_search = PostSearch.new
     end
+    @posts ||= Post.none
+    @posts = @posts.page(params[:page])
   end
 
   private
@@ -91,5 +104,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content, :media_type, :tag_list, :category_id)
+  end
+
+  def post_search_params
+    params.require(:post_search).permit(:title, :content, :media_type, :tag, :category_id, :user_id)
   end
 end
