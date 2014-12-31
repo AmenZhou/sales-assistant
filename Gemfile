@@ -42,6 +42,7 @@ gem 'acts-as-taggable-on'
 gem 'thin'
 gem 'masonry-rails'
 gem 'jquery-turbolinks'
+gem 'will_paginate'
 group :production do
   gem 'pg'
   gem 'whenever'

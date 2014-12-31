@@ -5,3 +5,5 @@
     = link_to 'New Post', new_post_path, class: "btn btn-primary align-right"
 #posts_list
   = render partial: 'post', collection: @posts
+
+= will_paginate @posts

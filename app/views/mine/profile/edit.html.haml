@@ -1,0 +1,5 @@
+%h1= (current_user.username || current_user.email) + "'s Profile Edit"
+= simple_form_for current_user, url: mine_profile_path, method: :patch, html: {class: 'col-md-6'} do |f|
+  = f.input :email, disabled: true
+  = f.input :username
+  = f.button :submit
