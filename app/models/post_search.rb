@@ -10,7 +10,7 @@ class PostSearch
 
   def search
     posts = Post.all
-    posts = posts.where('title LIKE :title', title: title) if title
+    posts = posts.where('title LIKE :title', title: "%#{title}%") if title
     posts = posts.tagged_with(tag) if tag
     posts = posts.where(category_id: category_id) if category_id
     posts = posts.where(user_id: user_id) if user_id
