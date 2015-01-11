@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :check_authorization
 
   def index
     @posts = model_name.order('updated_at desc').page(params[:page])
@@ -97,6 +98,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def check_authorization
+    raise 'authorization unaccessed' if controller_name == 'posts'
+  end
 
   def model_name
     controller_name.classify.constantize
