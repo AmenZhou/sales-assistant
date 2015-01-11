@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :categories
-  resources :posts do
+  resources :posts, :sales_tools do
     collection do
       get 'by_tag/:tag', to: :by_tag, as: :by_tag
       get 'by_username/:username', to: :by_username, as: :by_username, :constraints => { :username => /[^\/]+/ }

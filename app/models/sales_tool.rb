@@ -1,0 +1,2 @@
+class SalesTool < Post
+end

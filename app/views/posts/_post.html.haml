@@ -5,14 +5,14 @@
         = post.title
         - if post.user == current_user
           .align-right
-            = link_to 'Edit', edit_post_path(post)
-            = link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }
+            = link_to 'Edit', edit_polymorphic_path(post)
+            = link_to 'Delete', polymorphic_path(post), method: :delete, data: { confirm: 'Are you sure?' }
         %div.panel-head-line
           Category:
-          = link_to post.category.try(:name), by_category_posts_path(category: post.category.try(:name))
+          = link_to post.category.try(:name), polymorphic_path([:by_category, post.class], category: post.category.try(:name))
         %div.panel-head-line
           Author:
-          = link_to post.user.try(:email), by_username_posts_path(username: post.user.try(:email))
+          = link_to post.user.try(:email), polymorphic_path([:by_username, post.class], username: post.user.try(:email))
         %div.panel-head-line
           Updated Time
           = post.updated_at
@@ -21,9 +21,9 @@
       = render partial: 'posts/upload_files', locals: { upload_files: post.upload_files }
     .panel-footer
       %span Media Type:
-      = link_to post.media_type, by_media_type_posts_path(media_type: post.media_type)
+      = link_to post.media_type, polymorphic_path([:by_media_type, post.class], media_type: post.media_type)
       .align-right
         %span Tags:
-        = raw post.tag_list.map{|t| link_to t, by_tag_posts_path(tag: t)}.join(', ')
+        = raw post.tag_list.map{|t| link_to t, polymorphic_path([:by_tag, post.class], tag: t)}.join(', ')
 
 

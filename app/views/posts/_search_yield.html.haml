@@ -1,0 +1,11 @@
+%h1
+  = yield(:title)
+.row
+  .col-md-6
+    = yield(:head)
+.row
+  = yield(:lists)
+
+#posts_list
+  = render partial: 'post', collection: @posts
+= will_paginate @posts
