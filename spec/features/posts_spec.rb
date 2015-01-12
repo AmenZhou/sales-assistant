@@ -11,13 +11,13 @@ feature "Posts", :type => :feature do
 
   describe "new post" do
     before :each do
-      visit posts_path
+      visit sales_tools_path
     end
 
     it "click new post button should pop up a new post form" do
       page.should have_content 'New Post'
       click_link 'New Post'
-      page.should have_selector ".new_post"
+      page.should have_selector "#post_form"
     end
 
     it "click new post should pop up an upload file form" do
@@ -50,8 +50,8 @@ feature "Posts", :type => :feature do
       wait_for_ajax
       delete_uploaded_file
       within('#post_form') do
-        fill_in 'post_title', with: 'Hello World'
-        fill_in 'post_content', with: 'Hello World'
+        fill_in 'sales_tool_title', with: 'Hello World'
+        fill_in 'sales_tool_content', with: 'Hello World'
         select('EET', from: 'Media type')
         find('input[value="Submit"]').click
       end
@@ -61,10 +61,10 @@ feature "Posts", :type => :feature do
     it "create a new post with tags should success" do
       click_link 'New Post'
       within('#post_form') do
-        fill_in 'post_title', with: 'Hello World'
-        fill_in 'post_content', with: 'Hello World'
+        fill_in 'sales_tool_title', with: 'Hello World'
+        fill_in 'sales_tool_content', with: 'Hello World'
         select('EET', from: 'Media type')
-        fill_in 'post_tag_list', with: 'dog, cat'
+        fill_in 'sales_tool_tag_list', with: 'dog, cat'
         find('input[value="Submit"]').click
       end
       page.should have_content 'Success'
@@ -74,13 +74,13 @@ feature "Posts", :type => :feature do
 
   describe "edit post" do
     before :each do
-      visit posts_path
+      visit sales_tools_path
       click_link 'New Post'
       within('#post_form') do
-        fill_in 'post_title', with: 'Hello World'
-        fill_in 'post_content', with: 'Hello World'
+        fill_in 'sales_tool_title', with: 'Hello World'
+        fill_in 'sales_tool_content', with: 'Hello World'
         select('EET', from: 'Media type')
-        fill_in 'post_tag_list', with: 'dog, cat'
+        fill_in 'sales_tool_tag_list', with: 'dog, cat'
         find('input[value="Submit"]').click
       end
       find_link('Edit').click
@@ -88,15 +88,15 @@ feature "Posts", :type => :feature do
 
     it "edit page should correct" do
       page.should have_content 'Hello World'
-      find('input[name="post[tag_list]"]').value.should eq 'dog, cat'
+      find('input[name="sales_tool[tag_list]"]').value.should eq 'dog, cat'
     end
 
     it "submit edit should success" do
       within('#post_form') do
-        fill_in 'post_title', with: 'Good Day'
-        fill_in 'post_content', with: 'Good Day'
+        fill_in 'sales_tool_title', with: 'Good Day'
+        fill_in 'sales_tool_content', with: 'Good Day'
         select('EET', from: 'Media type')
-        fill_in 'post_tag_list', with: 'car, bike'
+        fill_in 'sales_tool_tag_list', with: 'car, bike'
         find('input[value="Submit"]').click
       end
       page.should have_content 'Success'
@@ -107,13 +107,13 @@ feature "Posts", :type => :feature do
 
   describe "delete post" do
     before :each do
-      visit posts_path
+      visit sales_tools_path
       click_link 'New Post'
       within('#post_form') do
-        fill_in 'post_title', with: 'Hello World'
-        fill_in 'post_content', with: 'Hello World'
+        fill_in 'sales_tool_title', with: 'Hello World'
+        fill_in 'sales_tool_content', with: 'Hello World'
         select('EET', from: 'Media type')
-        fill_in 'post_tag_list', with: 'dog, cat'
+        fill_in 'sales_tool_tag_list', with: 'dog, cat'
         find('input[value="Submit"]').click
       end
     end
