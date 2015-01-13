@@ -73,25 +73,21 @@ feature "Posts", :type => :feature do
   end
 
   describe "edit post" do
-    before :each do
+    let!(:sales_tool){FactoryGirl.create(:sales_tool)}
+
+    it "should have edit button" do
       visit sales_tools_path
-      click_link 'New Post'
-      within('#post_form') do
-        fill_in 'sales_tool_title', with: 'Hello World'
-        fill_in 'sales_tool_content', with: 'Hello World'
-        select('EET', from: 'Media type')
-        fill_in 'sales_tool_tag_list', with: 'dog, cat'
-        find('input[value="Submit"]').click
-      end
-      find_link('Edit').click
+      page.should have_selector '.glyphicon-edit'
     end
 
-    it "edit page should correct" do
-      page.should have_content 'Hello World'
-      find('input[name="sales_tool[tag_list]"]').value.should eq 'dog, cat'
+    it "open edit page should correct" do
+      visit edit_sales_tool_path(sales_tool)
+      page.should have_content sales_tool.title
+      find('input[name="sales_tool[tag_list]"]').value.should eq sales_tool.tag_list.join(', ')
     end
 
     it "submit edit should success" do
+      visit edit_sales_tool_path(sales_tool)
       within('#post_form') do
         fill_in 'sales_tool_title', with: 'Good Day'
         fill_in 'sales_tool_content', with: 'Good Day'
@@ -106,30 +102,19 @@ feature "Posts", :type => :feature do
   end
 
   describe "delete post" do
-    before :each do
-      visit sales_tools_path
-      click_link 'New Post'
-      within('#post_form') do
-        fill_in 'sales_tool_title', with: 'Hello World'
-        fill_in 'sales_tool_content', with: 'Hello World'
-        select('EET', from: 'Media type')
-        fill_in 'sales_tool_tag_list', with: 'dog, cat'
-        find('input[value="Submit"]').click
-      end
-    end
+    let!(:sales_tool){FactoryGirl.create(:sales_tool)}
 
-    it "delete post should success" do
-      find_link('Delete').click
-      #page.driver.browser.switch_to.alert.accept
-      page.should_not have_content 'Hello World'
+    it "post has delete button" do
+      visit sales_tools_path
+      page.should have_selector '.glyphicon-trash'
     end
   end
 
   describe "show post" do
-    let(:ticket){FactoryGirl.create(:ticket)}
+    let(:sales_tool){FactoryGirl.create(:sales_tool)}
     it 'page render success' do
-      visit sales_tool_path(ticket.id)
-      page.should have_content ticket.title
+      visit sales_tool_path(sales_tool.id)
+      page.should have_content sales_tool.title
     end
   end
 end

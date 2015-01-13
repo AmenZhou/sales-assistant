@@ -14,6 +14,8 @@ FactoryGirl.define do
     title 'Title'
     content 'Content'
     media_type 'EET'
+    user_id '1'
+    tag_list 'cat, dog'
     after(:create) do |st|
       st.category = create(:category)
       st.upload_files << create(:upload_file)
