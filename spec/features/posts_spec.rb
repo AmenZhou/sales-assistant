@@ -124,4 +124,12 @@ feature "Posts", :type => :feature do
       page.should_not have_content 'Hello World'
     end
   end
+
+  describe "show post" do
+    let(:ticket){FactoryGirl.create(:ticket)}
+    it 'page render success' do
+      visit sales_tool_path(ticket.id)
+      page.should have_content ticket.title
+    end
+  end
 end

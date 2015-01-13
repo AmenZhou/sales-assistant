@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
   resources :upload_files do
     post :create, on: :collection, :defaults => { :format => 'js' }
+    get :download_file, on: :member
   end
 
   namespace :mine do

@@ -3,10 +3,14 @@
     .panel-heading
       %h3.panel-title
         = post.title
-        - if post.user == current_user
-          .align-right
-            = link_to 'Edit', edit_polymorphic_path(post)
-            = link_to 'Delete', polymorphic_path(post), method: :delete, data: { confirm: 'Are you sure?' }
+        .align-right
+          = link_to polymorphic_path(post) do
+            %span.glyphicon.glyphicon-eye-open
+          - if post.user == current_user
+            = link_to edit_polymorphic_path(post) do
+              %span.glyphicon.glyphicon-edit
+            = link_to polymorphic_path(post), method: :delete, data: { confirm: 'Are you sure?' } do
+              %span.glyphicon.glyphicon-trash
         %div.panel-head-line
           Category:
           = link_to post.category.try(:name), polymorphic_path([:by_category, post.class], category: post.category.try(:name) || '')

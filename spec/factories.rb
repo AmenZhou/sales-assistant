@@ -10,4 +10,14 @@ FactoryGirl.define do
   factory :category do
     name "Meeting Records"
   end
+  factory :sales_tool do
+    title 'Title'
+    content 'Content'
+    media_type 'EET'
+    after(:create) do |st|
+      st.category = create(:category)
+      st.upload_files << create(:upload_file)
+      st.save
+    end
+  end
 end

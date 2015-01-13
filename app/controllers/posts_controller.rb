@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy, :show]
   before_action :check_authorization
 
   def index
     @posts = model_name.order('updated_at desc').page(params[:page])
+  end
+
+  def show
   end
 
   def new

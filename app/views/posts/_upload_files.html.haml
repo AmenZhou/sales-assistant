@@ -3,4 +3,4 @@
     %li.list-group-item
       = file_icon(file)
       = file.try(:image).try(:file).try(:filename)
-      = link_to 'Download', file.try(:image).try(:url)
+      = link_to 'Download', download_file_upload_file_path(file)
