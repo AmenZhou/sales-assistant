@@ -1,0 +1,5 @@
+= simple_form_for @post_search, polymorphic_path(current_controller) do |f|
+  %ul.nav.nav-sidebar
+    - model_name.tag_counts.each do |tag|
+      %li
+        = f.collection_radio_buttons :tag, model_name.tag
