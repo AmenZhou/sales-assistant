@@ -1,9 +1,18 @@
 .row
+  .btn-group.btn-group-justified
+    - Category.find_each do |category|
+      .btn-group
+        = link_to category.name, polymorphic_path(controller.controller_name, 'post_search[category_id]' => category.id), class: 'btn btn-default'
+.row.normal-row
   .col-md-6
-    = render 'search_links_head'
-  .col-md-6
-    = link_to 'New Post', "/#{controller.controller_name}/new", class: "btn btn-primary align-right"
-#posts_list
-  = render partial: 'post', collection: @posts
+    = link_to 'New Post', "/#{controller.controller_name}/new", class: "btn btn-primary"
 
-= will_paginate @posts
+.row.normal-row
+  .col-sm-3.col-md-2.sidebar
+    = render 'sidebar'
+
+  .col-md-10
+    #posts_list
+      = render partial: 'post', collection: @posts
+
+  = will_paginate @posts

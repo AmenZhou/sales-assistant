@@ -3,7 +3,15 @@ class PostsController < ApplicationController
   before_action :check_authorization
 
   def index
-    @posts = model_name.order('updated_at desc').page(params[:page])
+    if params[:post_search]
+      @post_search = PostSearch.new(post_search_params, controller_name)
+      @posts = @post_search.search
+    else
+      @post_search = PostSearch.new
+      @posts = model_name.order('updated_at desc')
+    end
+    @posts ||= model_name.none
+    @posts = @posts.page(params[:page])
   end
 
   def show
@@ -109,6 +117,8 @@ class PostsController < ApplicationController
   def model_name
     controller_name.classify.constantize
   end
+
+  helper_method :model_name
 
   def set_post
     @post = model_name.find(params[:id])

@@ -6,4 +6,8 @@ module PostsHelper
       image_tag file.try(:image).try(:default_url)
     end
   end
+
+  def current_controller
+    controller.controller_name
+  end
 end
