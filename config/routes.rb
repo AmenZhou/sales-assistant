@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
-
+  get '/clear', controller: :posts, action: :clear_search
   resources :categories
   resources :posts, :sales_tools do
     collection do

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy, :show]
-  before_action :check_authorization
+  # before_action :check_authorization
 
   def index
     if params[:post_search]
@@ -12,6 +12,12 @@ class PostsController < ApplicationController
     end
     @posts ||= model_name.none
     @posts = @posts.page(params[:page])
+  end
+
+  def clear_search
+    current_user.tmp_params={}
+    current_user.save
+    redirect_to  :action => "index"
   end
 
   def show
@@ -129,6 +135,13 @@ class PostsController < ApplicationController
   end
 
   def post_search_params
+    set_params
     params.require(:post_search).permit(:title, :content, :media_type, :tag, :category_id, :user_id)
+  end
+
+  def set_params
+    params[:post_search].merge!(current_user.tmp_params)
+    current_user.tmp_params = params[:post_search]
+    current_user.save    
   end
 end

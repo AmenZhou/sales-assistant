@@ -6,6 +6,7 @@
 .row.normal-row
   .col-md-6
     = link_to 'New Post', "/#{controller.controller_name}/new", class: "btn btn-primary"
+    = link_to 'Clear search', 'clear', class: "btn btn-warning"
 
 .row.normal-row
   .col-sm-3.col-md-2.sidebar
@@ -13,6 +14,5 @@
 
   .col-md-10
     #posts_list
-      = render partial: 'post', collection: @posts
-
+      = render partial: 'post', :posts => @posts
   = will_paginate @posts
