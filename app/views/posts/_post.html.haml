@@ -1,33 +1,40 @@
-.post-panel-group
-  .panel.panel-default
-    .panel-heading
-      %h3.panel-title
-        = post.title
-        .align-right
-          = link_to polymorphic_path(post) do
-            %span.glyphicon.glyphicon-eye-open
-          - if post.user == current_user
-            = link_to edit_polymorphic_path(post) do
-              %span.glyphicon.glyphicon-edit
-            = link_to polymorphic_path(post), method: :delete, data: { confirm: 'Are you sure?' } do
-              %span.glyphicon.glyphicon-trash
-        %div.panel-head-line
-          Category:
-          = link_to post.category.try(:name), polymorphic_path([:by_category, post.class], category: post.category.try(:name) || '')
-        %div.panel-head-line
-          Author:
-          = link_to post.user.try(:email), polymorphic_path([:by_username, post.class], username: post.user.try(:email))
-        %div.panel-head-line
-          Updated Time
-          = post.updated_at
-    .panel-body
-      = post.content
-      = render partial: 'posts/upload_files', locals: { upload_files: post.upload_files }
-    .panel-footer
-      %span Media Type:
-      = link_to post.media_type, polymorphic_path([:by_media_type, post.class], media_type: post.media_type || '')
-      .align-right
-        %span Tags:
-        = raw post.tag_list.map{|t| link_to t, polymorphic_path([:by_tag, post.class], tag: t)}.join(', ')
+/ .post-panel-group
+/   .panel.panel-default
+/     .panel-heading
+/       %h3.panel-title
+/         = post.title
+/         .align-right
+/           = link_to polymorphic_path(post) do
+/             %span.glyphicon.glyphicon-eye-open
+/           - if post.user == current_user
+/             = link_to edit_polymorphic_path(post) do
+/               %span.glyphicon.glyphicon-edit
+/             = link_to polymorphic_path(post), method: :delete, data: { confirm: 'Are you sure?' } do
+/               %span.glyphicon.glyphicon-trash
+/         %div.panel-head-line
+/           Category:
+/           = link_to post.category.try(:name), polymorphic_path([:by_category, post.class], category: post.category.try(:name) || '')
+/         %div.panel-head-line
+/           Author:
+/           = link_to post.user.try(:email), polymorphic_path([:by_username, post.class], username: post.user.try(:email))
+/         %div.panel-head-line
+/           Updated Time
+/           = post.updated_at
+/     .panel-body
+/       = post.content
+/       = render partial: 'posts/upload_files', locals: { upload_files: post.upload_files }
+/     .panel-footer
+/       %span Media Type:
+/       = link_to post.media_type, polymorphic_path([:by_media_type, post.class], media_type: post.media_type || '')
+/       .align-right
+/         %span Tags:
+/         = raw post.tag_list.map{|t| link_to t, polymorphic_path([:by_tag, post.class], tag: t)}.join(', ')
+
+
+
+
+
+
+
 
 

@@ -10,5 +10,5 @@
         = link_to c, polymorphic_path([:by_category, controller.controller_name], category: c)
 
 #posts_list
-  = render partial: 'post', collection: @posts
+  = render partial: 'posts_list', :posts => @posts
 = will_paginate @posts

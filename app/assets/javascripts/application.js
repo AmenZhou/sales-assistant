@@ -16,7 +16,8 @@
 //= require bootstrap-sprockets
 //= require vendor
 //= require jquery.remotipart
+//= require chosen-jquery
+//= require chosen_config
 //= require main
-//= require masonry/jquery.masonry
 //= require turbolinks
 //= require_tree .

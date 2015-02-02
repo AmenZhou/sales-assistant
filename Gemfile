@@ -11,11 +11,14 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails-html-sanitizer', '~> 1.0'
+gem 'chosen-rails'
 group :development, :test do
   gem 'faker'
   gem 'byebug'
   gem 'web-console', '~> 2.0.0.beta2'
   gem 'spring'
+  gem 'pry'
+  gem "better_errors"
 end
 gem 'yelp'
 gem 'haml-rails'
@@ -40,7 +43,7 @@ gem "fog"
 gem 'remotipart', '~> 1.2'
 gem 'acts-as-taggable-on'
 gem 'thin'
-gem 'masonry-rails'
+#gem 'masonry-rails'
 gem 'jquery-turbolinks'
 gem 'will_paginate'
 group :production do

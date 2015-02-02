@@ -3,7 +3,21 @@ class PostsController < ApplicationController
   before_action :check_authorization
 
   def index
-    @posts = model_name.order('updated_at desc').page(params[:page])
+    if params[:post_search]
+      @post_search = PostSearch.new(post_search_params, controller_name)
+      @posts = @post_search.search
+    else
+      @post_search = PostSearch.new
+      @posts = model_name.order('updated_at desc')
+    end
+    @posts ||= model_name.none
+    @posts = @posts.page(params[:page])
+  end
+
+  def clear_search
+    current_user.tmp_params={}
+    current_user.save
+    redirect_to  :action => "index"
   end
 
   def show
@@ -110,6 +124,8 @@ class PostsController < ApplicationController
     controller_name.classify.constantize
   end
 
+  helper_method :model_name
+
   def set_post
     @post = model_name.find(params[:id])
   end
@@ -119,6 +135,12 @@ class PostsController < ApplicationController
   end
 
   def post_search_params
+    set_params
     params.require(:post_search).permit(:title, :content, :media_type, :tag, :category_id, :user_id)
+  end
+
+  def set_params
+    params[:post_search] = current_user.tmp_params.merge!(params[:post_search])
+    current_user.save
   end
 end
