@@ -6,7 +6,7 @@
 .row.normal-row
   .col-md-6
     = link_to 'New Post', "/#{controller.controller_name}/new", class: "btn btn-primary"
-    = link_to 'Clear search', 'clear', class: "btn btn-warning"
+    = link_to 'Clear search', polymorphic_path([:clear, controller.controller_name]), class: "btn btn-warning"
 
 .row.normal-row
   .col-sm-3.col-md-2.sidebar
