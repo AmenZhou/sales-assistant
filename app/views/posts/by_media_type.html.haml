@@ -7,7 +7,7 @@
     Media Types
     - Post::MediaType.each do |mt|
       %li
-        = link_to mt, by_media_type_posts_path(mt)
+        = link_to mt, polymorphic_path([:by_media_type, controller.controller_name], media_type: mt)
 
 #posts_list
   = render partial: 'post', collection: @posts

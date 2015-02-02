@@ -26,7 +26,7 @@ tags = Faker::Lorem.words(10)
 puts 'create posts'
 50.times.each do
   print '.'
-  post = Post.create!(user_id: User.pluck(:id).sample, title: Faker::Lorem.word, content: Faker::Lorem.sentence, category_id: Category.pluck(:id).sample,  media_type: Post::MediaType.sample, tag_list: tags.sample)
+  post = SalesTool.create!(user_id: User.pluck(:id).sample, title: Faker::Lorem.word, content: Faker::Lorem.sentence, category_id: Category.pluck(:id).sample,  media_type: Post::MediaType.sample, tag_list: tags.sample)
   post.upload_files.create!(remote_image_url: 'http://epoch-152230.use1-2.nitrousbox.com/assets/logo.png')
 end
 

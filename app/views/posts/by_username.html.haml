@@ -7,7 +7,7 @@
     Usernames
     - User.pluck(:email).each do |email|
       %li
-        = link_to email, by_username_posts_path(username: email)
+        = link_to email, polymorphic_path([:by_username, controller.controller_name], username: email)
 
 #posts_list
   = render partial: 'post', collection: @posts

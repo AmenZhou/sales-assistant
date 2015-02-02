@@ -1,0 +1,39 @@
+%h1
+  = @post.title
+.table-form
+  .row
+    .col-md-3
+      Author:
+    .col-md-7
+      = @post.user.try(:username) || @post.user.try(:email)
+  .row
+    .col-md-3
+      Updated Date:
+    .col-md-7
+      = @post.updated_at
+  .row
+    .col-md-3
+      Category:
+    .col-md-7
+      = @post.category.try(:name)
+  .row
+    .col-md-3
+      Content:
+    .col-md-7
+      = @post.content
+  .row
+    .col-md-3
+      Tags:
+    .col-md-7
+      = @post.tag_list
+  .row
+    .col-md-3
+      Media Type:
+    .col-md-7
+      = @post.media_type
+  .row
+    .col-md-3
+      Files:
+    .col-md-7
+      = render partial: 'posts/upload_files', locals: { upload_files: @post.upload_files }
+

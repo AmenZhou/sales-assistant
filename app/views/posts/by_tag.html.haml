@@ -7,7 +7,7 @@
     Tags
     - tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class|
       %li
-        = link_to tag.name, by_tag_posts_path(tag.name), class: css_class
+        = link_to tag.name, polymorphic_path([:by_tag, controller.controller_name], tag: tag.name), class: css_class
 
 #posts_list
   = render partial: 'post', collection: @posts

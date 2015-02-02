@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230210939) do
+ActiveRecord::Schema.define(version: 20150111024948) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141230210939) do
     t.string   "media_type"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "type"
   end
 
   create_table "taggings", force: true do |t|

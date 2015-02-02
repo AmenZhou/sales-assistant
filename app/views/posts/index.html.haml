@@ -2,7 +2,7 @@
   .col-md-6
     = render 'search_links_head'
   .col-md-6
-    = link_to 'New Post', new_post_path, class: "btn btn-primary align-right"
+    = link_to 'New Post', "/#{controller.controller_name}/new", class: "btn btn-primary align-right"
 #posts_list
   = render partial: 'post', collection: @posts
 

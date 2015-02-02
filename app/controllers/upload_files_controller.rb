@@ -17,6 +17,10 @@ class UploadFilesController < ApplicationController
     end
   end
 
+  def download_file
+    send_file UploadFile.get_path_by_id(params[:id])
+  end
+
   private
 
   def set_file

@@ -7,7 +7,7 @@
     Categories
     - Category.pluck(:name).each do |c|
       %li
-        = link_to c, by_category_posts_path(category: c)
+        = link_to c, polymorphic_path([:by_category, controller.controller_name], category: c)
 
 #posts_list
   = render partial: 'post', collection: @posts
