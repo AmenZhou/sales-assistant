@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Category.destroy_all
-Category.create(name: 'Product Introduction')
+Category.create(name: '產品介紹')
 Category.create(name: 'Presentation')
 Category.create(name: 'Proposal')
-Category.create(name: 'Price')
-Category.create(name: 'Email Scope')
-Category.create(name: 'Advertise Scope')
-Category.create(name: 'Customer Feedback')
-Category.create(name: 'Workflow')
-Category.create(name: 'Else')
+Category.create(name: '價格')
+Category.create(name: '郵件範圍')
+Category.create(name: '廣告範圍')
+Category.create(name: '客戶反饋')
+Category.create(name: '工作流程')
+Category.create(name: '其他')
 
 User.destroy_all
 User.create(email: 'user1@test.com', password: 'password', password_confirmation: 'password')
