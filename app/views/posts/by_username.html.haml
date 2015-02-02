@@ -10,5 +10,5 @@
         = link_to email, polymorphic_path([:by_username, controller.controller_name], username: email)
 
 #posts_list
-  = render partial: 'post', collection: @posts
+  = render partial: 'posts_list', :posts => @posts
 = will_paginate @posts

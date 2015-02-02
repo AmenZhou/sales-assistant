@@ -10,5 +10,5 @@
         = link_to tag.name, polymorphic_path([:by_tag, controller.controller_name], tag: tag.name), class: css_class
 
 #posts_list
-  = render partial: 'post', collection: @posts
+  = render partial: 'posts_list', :posts => @posts
 = will_paginate @posts
