@@ -22,9 +22,10 @@
         %td= link_to post.media_type, polymorphic_path([:by_media_type, post.class], media_type: post.media_type || '')
         %td= raw post.tag_list.map{|t| link_to t, polymorphic_path([:by_tag, post.class], tag: t)}.join(', ')
         - if post.user.try(:email) == current_user.email
-          %td= link_to "Edit", edit_post_path(post), class: "btn btn-warning btn-xs"
-          %td= link_to "Destroy", post_path(post), method: :delete, class: "btn btn-danger btn-xs"
+          .btn-group
+            %td= link_to "Edit", edit_polymorphic_path(post), class: "btn btn-warning btn-xs"
+            %td= link_to "Destroy", polymorphic_path(post), method: :delete, class: "btn btn-danger btn-xs"
         - else
-          %td= link_to "Edit", edit_post_path(post), class: "btn btn-warning btn-xs", disabled: "disabled"
-          %td= link_to "Destroy", post_path(post), method: :delete, class: "btn btn-danger btn-xs", disabled: "disabled"
+          %td= link_to "Edit", edit_polymorphic_path(post), class: "btn btn-warning btn-xs", disabled: "disabled"
+          %td= link_to "Destroy", polymorphic_path(post), method: :delete, class: "btn btn-danger btn-xs", disabled: "disabled"
 
