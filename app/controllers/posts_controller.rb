@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy, :show]
-  # before_action :check_authorization
+  before_action :check_authorization
 
   def index
     if params[:post_search]
@@ -140,10 +140,15 @@ class PostsController < ApplicationController
   end
 
   def set_params
+<<<<<<< HEAD
 
     # params[:post_search].merge!(current_user.tmp_params)
     params[:post_search] = current_user.tmp_params.merge!(params[:post_search])
     current_user.tmp_params = params[:post_search]
     current_user.save    
+=======
+    params[:post_search] = current_user.tmp_params.merge!(params[:post_search])
+    current_user.save
+>>>>>>> 3179fe7b51a9d079c095cc824549239fef5c4078
   end
 end

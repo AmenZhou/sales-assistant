@@ -10,5 +10,5 @@
         = link_to mt, polymorphic_path([:by_media_type, controller.controller_name], media_type: mt)
 
 #posts_list
-  = render partial: 'post', collection: @posts
+  = render partial: 'posts_list', :posts => @posts
 = will_paginate @posts
