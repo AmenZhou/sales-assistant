@@ -1,0 +1,2 @@
+class ActivityPostsController < PostsController
+end

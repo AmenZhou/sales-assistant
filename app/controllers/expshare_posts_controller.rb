@@ -1,0 +1,2 @@
+class ExpsharePostsController < PostsController
+end

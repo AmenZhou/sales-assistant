@@ -1,0 +1,2 @@
+class GlobalfoodPostsController < PostsController
+end

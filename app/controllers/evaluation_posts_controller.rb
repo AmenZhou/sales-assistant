@@ -1,0 +1,2 @@
+class EvaluationPostsController < PostsController
+end

@@ -1,0 +1,2 @@
+class MeetingrecordPost < Post
+end
