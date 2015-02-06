@@ -2,7 +2,10 @@
   .btn-group.btn-group-justified
     - Category.find_each do |category|
       .btn-group
-        = link_to category.name, polymorphic_path(controller.controller_name, 'post_search[category_id]' => category.id), class: 'btn btn-default'
+        - if current_user.tmp_params["category_id"].to_i == category.id 
+          = link_to category.name, polymorphic_path(controller.controller_name, 'post_search[category_id]' => category.id), class: 'btn btn-default active'
+        - else
+          = link_to category.name, polymorphic_path(controller.controller_name, 'post_search[category_id]' => category.id), class: 'btn btn-default'
 .row.normal-row
   .col-md-6
     = link_to 'New Post', "/#{controller.controller_name}/new", class: "btn btn-primary"
@@ -16,3 +19,4 @@
     #posts_list
       = render partial: 'post', :posts => @posts
   = will_paginate @posts
+

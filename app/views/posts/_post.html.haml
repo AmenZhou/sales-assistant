@@ -29,7 +29,6 @@
 /       .align-right
 /         %span Tags:
 /         = raw post.tag_list.map{|t| link_to t, polymorphic_path([:by_tag, post.class], tag: t)}.join(', ')
-
 %table.table.table-hover
   %thead
     %tr
