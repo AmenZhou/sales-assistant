@@ -8,15 +8,24 @@
       %th Updated Time
       %th Media Type
       %th Tags
-
+      %th Edit
+      %th Destroy
   - @posts.each_with_index do |post,i|
     %tbody
       %tr
-        %td= post.title
+        %td= link_to "#{post.title}", post_path(post)
         %td= post.content
 
         %td= link_to post.category.try(:name), polymorphic_path([:by_category, post.class], category: post.category.try(:name) || '')
         %td= link_to post.user.try(:email), polymorphic_path([:by_username, post.class], username: post.user.try(:email))
-        %td= post.updated_at
+        %td= post.updated_at.strftime("%R %D")
         %td= link_to post.media_type, polymorphic_path([:by_media_type, post.class], media_type: post.media_type || '')
         %td= raw post.tag_list.map{|t| link_to t, polymorphic_path([:by_tag, post.class], tag: t)}.join(', ')
+        - if post.user.try(:email) == current_user.email
+          .btn-group
+            %td= link_to "Edit", edit_polymorphic_path(post), class: "btn btn-warning btn-xs"
+            %td= link_to "Destroy", polymorphic_path(post), method: :delete, class: "btn btn-danger btn-xs"
+        - else
+          %td= link_to "Edit", edit_polymorphic_path(post), class: "btn btn-warning btn-xs", disabled: "disabled"
+          %td= link_to "Destroy", polymorphic_path(post), method: :delete, class: "btn btn-danger btn-xs", disabled: "disabled"
+

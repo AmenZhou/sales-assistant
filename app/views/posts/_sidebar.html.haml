@@ -2,12 +2,21 @@
   %h4 User
   - User.all.each do |user|
     %li
-      = link_to user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id)
+    - if current_user.tmp_params[:user_id].to_i == user.id 
+      = link_to user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id ), class: "btn btn-default active"
+    - else
+      = link_to user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id ), class: "btn btn-default"
   %h4 Media Type
   - Post::MediaType.each do |type|
     %li
-      = link_to type, polymorphic_path(current_controller, 'post_search[media_type]' => type)
+    - if current_user.tmp_params[:media_type] == type 
+      = link_to type, polymorphic_path(current_controller, 'post_search[media_type]' => type ), class: "btn btn-default active" 
+    - else
+      = link_to type, polymorphic_path(current_controller, 'post_search[media_type]' => type ), class: "btn btn-default" 
   %h4 Tags
   - model_name.tag_counts.each do |tag|
     %li
-      = link_to tag.name, polymorphic_path(current_controller, 'post_search[tag]' => tag.name)
+    - if current_user.tmp_params[:tag] == tag.name
+      = link_to tag.name, polymorphic_path(current_controller, 'post_search[tag]' => tag.name), class: "btn btn-default active"
+    - else
+      = link_to tag.name, polymorphic_path(current_controller, 'post_search[tag]' => tag.name), class: "btn btn-default"

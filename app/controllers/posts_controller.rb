@@ -141,6 +141,7 @@ class PostsController < ApplicationController
 
   def set_params
     params[:post_search] = current_user.tmp_params.merge!(params[:post_search])
-    current_user.save
+    current_user.tmp_params = params[:post_search]
+    current_user.save    
   end
 end
