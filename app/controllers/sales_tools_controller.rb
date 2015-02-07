@@ -1,7 +1,7 @@
 class SalesToolsController < PostsController
   def index
     super
-    @categories = SalesToolCategory.all
+    @categories = SalestoolCategory.all
   end
 
   private
