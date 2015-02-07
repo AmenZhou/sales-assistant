@@ -1,0 +1,2 @@
+class GlobalfoodPost < Post
+end

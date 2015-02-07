@@ -1,4 +1,9 @@
 class SalesToolsController < PostsController
+  def index
+    super
+    @categories = SalestoolCategory.all
+  end
+
   private
 
   def post_params

@@ -1,0 +1,2 @@
+class MeetingrecordCategory < Category
+end

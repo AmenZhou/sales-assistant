@@ -1,6 +1,6 @@
 .row
   .btn-group.btn-group-justified
-    - Category.find_each do |category|
+    - @categories.each do |category|
       .btn-group
         - if current_user.tmp_params["category_id"].to_i == category.id 
           = link_to category.name, polymorphic_path(controller.controller_name, 'post_search[category_id]' => category.id), class: 'btn btn-default active'

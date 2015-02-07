@@ -1,0 +1,2 @@
+class ExpsharePost < Post
+end

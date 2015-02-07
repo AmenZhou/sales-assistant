@@ -1,0 +1,2 @@
+class EvaluationPost < Post
+end

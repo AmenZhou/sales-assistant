@@ -1,0 +1,2 @@
+class ActivityPost < Post
+end

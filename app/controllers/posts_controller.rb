@@ -10,6 +10,7 @@ class PostsController < ApplicationController
       @post_search = PostSearch.new
       @posts = model_name.order('updated_at desc')
     end
+    @categories = Category.all
     @posts ||= model_name.none
     @posts = @posts.page(params[:page])
   end

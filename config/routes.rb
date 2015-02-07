@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
   resources :categories
-  resources :posts, :sales_tools do
+  resources :posts, :sales_tools, :expshare_posts, :activity_posts, :globalfood_posts, :meetingrecord_posts, :evaluation_posts do
     collection do
       get 'by_tag/:tag', action: :by_tag, as: :by_tag
       get 'clear', action: :clear_search

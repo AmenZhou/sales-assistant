@@ -1,0 +1,2 @@
+class SalestoolCategory < Category
+end
