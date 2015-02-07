@@ -1,2 +1,2 @@
-class SalesTool < Category
+class SalestoolCategory < Category
 end

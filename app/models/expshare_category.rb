@@ -1,0 +1,2 @@
+class ExpshareCategory < Category
+end
