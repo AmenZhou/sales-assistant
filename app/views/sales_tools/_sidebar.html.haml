@@ -6,6 +6,13 @@
       = link_to user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id ), class: "btn btn-default active"
     - else
       = link_to user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id ), class: "btn btn-default"
+  %h4 Media Type
+  - Post::MediaType.each do |type|
+    %li
+    - if current_user.tmp_params[:media_type] == type 
+      = link_to type, polymorphic_path(current_controller, 'post_search[media_type]' => type ), class: "btn btn-default active" 
+    - else
+      = link_to type, polymorphic_path(current_controller, 'post_search[media_type]' => type ), class: "btn btn-default" 
   %h4 Tags
   - model_name.tag_counts.each do |tag|
     %li

@@ -13,7 +13,11 @@
       %tr  
         %td= post.title
         %td= post.content
-        %td= link_to post.category.try(:name), polymorphic_path([:by_category, post.class], category: post.category.try(:name) || '')
+				- if post.category
+					%td= link_to post.category.try(:name), polymorphic_path([:by_category, post.class], category: post.category.try(:name) || '')
+				- else
+
+					- end
         %td= link_to post.user.try(:email), polymorphic_path([:by_username, post.class], username: post.user.try(:email))
         %td= post.updated_at
         %td= link_to post.media_type, polymorphic_path([:by_media_type, post.class], media_type: post.media_type || '')

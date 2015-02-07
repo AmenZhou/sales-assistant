@@ -15,11 +15,16 @@
       %tr
         %td= link_to "#{post.title}", polymorphic_path(post)
         %td= post.content
-
-        %td= link_to post.category.try(:name), polymorphic_path([:by_category, post.class], category: post.category.try(:name) || '')
+        - if post.category
+          %td= link_to post.category.try(:name), polymorphic_path([:by_category, post.class], category: post.category.try(:name) || '')
+        - else
+          %td
         %td= link_to post.user.try(:email), polymorphic_path([:by_username, post.class], username: post.user.try(:email))
         %td= post.updated_at.strftime("%R %D")
-        %td= link_to post.media_type, polymorphic_path([:by_media_type, post.class], media_type: post.media_type || '')
+        - if post.media_type
+          %td= link_to post.media_type, polymorphic_path([:by_media_type, post.class], media_type: post.media_type || '')
+        - else
+          %td
         %td= raw post.tag_list.map{|t| link_to t, polymorphic_path([:by_tag, post.class], tag: t)}.join(', ')
         - if post.user.try(:email) == current_user.email
           .btn-group
