@@ -1,4 +1,10 @@
 .row
+  .col-md-5
+    = link_to 'Home', root_path, class: 'btn btn-default'
+  .col-md-3
+    %h3= controller.controller_name.classify
+
+.row.normal-row
   .btn-group.btn-group-justified
     - @categories.each do |category|
       .btn-group
@@ -10,6 +16,8 @@
   .col-md-6
     = link_to 'New Post', "/#{controller.controller_name}/new", class: "btn btn-primary"
     = link_to 'Clear search', polymorphic_path([:clear, controller.controller_name]), class: "btn btn-warning"
+  .align-right
+    = link_to 'Search Tools', polymorphic_path([:by_complex_search, controller.controller_name]), class: 'btn btn-primary'
 
 .row.normal-row
   .col-sm-3.col-md-2.sidebar

@@ -1,13 +1,16 @@
-%h1 Username Search Page
+.row
+  .col-md-5
+    = link_to 'Home', root_path, class: 'btn btn-default'
+  .col-md-4
+    %h3
+      Username Search Page
 .row
   .col-md-6
     = render 'search_links_head'
 .row
-  %ol.breadcrumb
-    Usernames
-    - User.pluck(:email).each do |email|
-      %li
-        = link_to email, polymorphic_path([:by_username, controller.controller_name], username: email)
+  Usernames
+  - User.pluck(:email).each do |email|
+    = link_to email, polymorphic_path([:by_username, controller.controller_name], username: email), class: 'btn btn-default'
 
 #posts_list
   = render partial: 'posts_list', :posts => @posts
