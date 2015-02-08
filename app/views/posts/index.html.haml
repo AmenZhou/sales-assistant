@@ -2,7 +2,8 @@
   .col-md-5
     = link_to 'Home', root_path, class: 'btn btn-default'
   .col-md-3
-    %h3= controller.controller_name.classify
+    %h3= I18n.t("board.#{controller.controller_name}")
+
 
 .row.normal-row
   .btn-group.btn-group-justified

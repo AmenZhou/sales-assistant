@@ -1,0 +1,9 @@
+zh-CN:
+  table:
+    title: 标题
+    content: 内容
+    category: 类别
+    author: 作者
+    updated_time: 上传时间
+    media_type: 媒体
+    tags: 标签
