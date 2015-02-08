@@ -1,6 +1,7 @@
 class ActivityPostsController < PostsController
-  def index
-    super
+  private
+
+  def set_categories
     @categories = ActivityCategory.all
   end
 end

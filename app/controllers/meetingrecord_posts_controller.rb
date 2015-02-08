@@ -1,6 +1,8 @@
 class MeetingrecordPostsController < PostsController
-  def index
-    super
+
+  private
+
+  def set_categories
     @categories = MeetingrecordCategory.all
   end
 end

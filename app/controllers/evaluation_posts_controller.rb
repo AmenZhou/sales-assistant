@@ -1,6 +1,7 @@
 class EvaluationPostsController < PostsController
-  def index
-    super
+  private
+
+  def set_categories
     @categories = EvaluationCategory.all
   end
 end

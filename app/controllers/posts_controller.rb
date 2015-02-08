@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy, :show]
   before_action :check_authorization
+  before_action :set_categories, only: [:index, :create]
 
   def index
     if params[:post_search]
@@ -10,7 +11,6 @@ class PostsController < ApplicationController
       @post_search = PostSearch.new
       @posts = model_name.order('updated_at desc')
     end
-    @categories = Category.all
     @posts ||= model_name.none
     @posts = @posts.page(params[:page])
   end
@@ -116,6 +116,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_categories
+    @categories = Category.all
+  end
 
   def check_authorization
     raise 'authorization unaccessed' if controller_name == 'posts'

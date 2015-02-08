@@ -7,6 +7,7 @@
   = f.input :title, input_html: { maxlength: 50}
   = f.association :category, label_method: :name, value_method: :id, prompt: 'Select a category'
   = f.input :content, input_html: { maxlength: 1000 }
+  = f.input :media_type, collection: Post::MediaType, prompt: 'Select a media type...'
   = f.input :tag_list, input_html: { value: @post.tag_list.try(:join, ', ') }
   (separated by commas)
   = f.button :submit, 'Submit'

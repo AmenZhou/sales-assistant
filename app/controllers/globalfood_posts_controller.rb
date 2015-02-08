@@ -1,6 +1,7 @@
 class GlobalfoodPostsController < PostsController
-  def index
-    super
+  private
+
+  def set_categories
     @categories = GlobalfoodCategory.all
   end
 end
