@@ -2,7 +2,12 @@ zh-CN:
   board:
     sales_tools: 销售工具
     experience_share: 经验分享
+    expshare_posts: 经验分享
     activities: 活动
+    activity_posts: 活动
     global_foods: 全球食品
+    globalfood_posts: 全球食品
     meeting_records: 会议记录
+    meetingrecord_posts: 会议记录
     evaluations: 评估
+    evaluation_posts: 评估
