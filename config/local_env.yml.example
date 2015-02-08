@@ -1,0 +1,11 @@
+default: &default
+  YELP_KEY: xx
+  YELP_SECRET: xx
+  YELP_TOKEN: xx
+  YELP_TOKEN_SECRET: xx
+
+development:
+  <<: *default
+
+production:
+  <<: *default
