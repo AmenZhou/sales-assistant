@@ -1,5 +1,6 @@
 #require_relative '../../lib/yelp'
 class YelpGrab < ActiveRecord::Base
+  self.per_page = 10
   def YelpGrab::grab
     begin_time = Time.now
     (21..50).each do |i|

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'yelp/index'
+
   devise_for :users
   root 'home#index'
   resources :categories

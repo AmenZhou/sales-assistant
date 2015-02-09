@@ -1,0 +1,29 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Genre
+      %th Rating
+      %th Phone Number
+      %th Address
+      %th City
+      %th Zipcode
+  - @yelps.each_with_index do |y, i|
+    %tbody
+      %tr
+        %td.col-md-2= link_to "#{y.name}", y.url
+        %td.col-md-3= y.genre
+        %td.col-md-1= y.rating
+        %td.col-md-2= y.phone_num
+        %td.col-md-2= y.address
+        
+        / %td= y.phone_num
+        /%td= y.yelp_id
+        /%td= y.created_at
+        /%td= y.updated_at
+        %td.col-md-1= y.city
+        %td.col-md-1= y.zipcode
+        /%td= y.street
+        
+        / %td= y.genre
+= will_paginate @yelps       
