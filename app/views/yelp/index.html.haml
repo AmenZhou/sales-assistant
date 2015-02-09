@@ -1,3 +1,5 @@
+= link_to "Refresh", yelp_regrab_path, class: 'btn btn-info'
+
 %table.table.table-hover
   %thead
     %tr
@@ -19,8 +21,9 @@
         
         / %td= y.phone_num
         /%td= y.yelp_id
-        /%td= y.created_at
-        /%td= y.updated_at
+        %td= y.updated_at
+
+        /%td.col-md-2= timeago_tag Time.zone.now, :nojs => true
         %td.col-md-1= y.city
         %td.col-md-1= y.zipcode
         /%td= y.street
