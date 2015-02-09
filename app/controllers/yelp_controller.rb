@@ -4,7 +4,7 @@ class YelpController < ApplicationController
   end
 
   def regrab
-  	YelpGrab.grab
+  	YelpGrabWorker.perform_async('bob', 5)
   	redirect_to action: :index
   end
 end

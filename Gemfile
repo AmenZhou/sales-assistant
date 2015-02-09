@@ -46,6 +46,7 @@ gem 'thin'
 #gem 'masonry-rails'
 gem 'jquery-turbolinks'
 gem 'will_paginate'
+gem 'sidekiq'
 group :production do
   gem 'pg'
   gem 'whenever'
