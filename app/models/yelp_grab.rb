@@ -4,24 +4,26 @@ class YelpGrab < ActiveRecord::Base
     begin_time = Time.now
     (21..50).each do |i|
     begin
-      rs = Yelp.client.search('NYC', {term: 'best restaurants for restaurant week', limit: 20, offset: (i * 20)})
+      rs = Yelp.client.search('NYC', { term: 'best restaurants for restaurant week',
+                                      limit: 20, 
+                                     offset: (i * 20)})
     rescue Exception => e
       logger.fatal e
       break
     end
-      rs.businesses.each do |business|
-        yp = YelpGrab.find_or_create_by(yelp_id: business.id)
-        yp.update_attributes(
-          name: business.try('name'),
-          phone_num: business.try('display_phone'),
-          url: business.try('url'),
-          city: business.try('location').try('city'),
-          zipcode: business.try('location').try('postal_code'),
-          street: business.try('location').try('address').try(:join, ''),
-          address: business.try('location').try('display_address').try('join', ' '),
-          rating: business.try('rating'),
-          genre: business.try('categories').try(:join, ' ')
-        )
+    rs.businesses.each do |business|
+      yp = YelpGrab.find_or_create_by(yelp_id: business.id)
+      yp.update_attributes(
+        name: business.try('name'),
+        phone_num: business.try('display_phone'),
+        url: business.try('url'),
+        city: business.try('location').try('city'),
+        zipcode: business.try('location').try('postal_code'),
+        street: business.try('location').try('address').try(:join, ''),
+        address: business.try('location').try('display_address').try('join', ' '),
+        rating: business.try('rating'),
+        genre: business.try('categories').try(:join, ' ')
+      )
       end
     end
     end_time = Time.now
