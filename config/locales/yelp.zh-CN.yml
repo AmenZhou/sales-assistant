@@ -1,0 +1,9 @@
+zh-CN:
+  yelp:
+    name: 名称
+    genre: 风格
+    rating: 评分
+    phone_number: 电话
+    address: 地址
+    city: 城市
+    zipcode: 邮编

@@ -1,13 +1,13 @@
 %table.table.table-hover
   %thead
     %tr
-      %th Name
-      %th Genre
-      %th Rating
-      %th Phone Number
-      %th Address
-      %th City
-      %th Zipcode
+      %th= t 'yelp.name'
+      %th= t 'yelp.genre'
+      %th= t 'yelp.rating'
+      %th= t 'yelp.phone_number'
+      %th= t 'yelp.address'
+      %th= t 'yelp.city'
+      %th= t 'yelp.zipcode'
   - @yelps.each_with_index do |y, i|
     %tbody
       %tr
