@@ -1,4 +1,11 @@
-= link_to "Refresh", yelp_regrab_path, class: 'btn btn-info'
+.row
+  - if job_running? current_job_id
+
+    = link_to "Refresh", yelp_regrab_path, class: 'btn btn-info col-md-1', disabled: true
+    %h4.col-md-11 Grab job is already running. If you want to re-grab, just waite few minutes and refresh the page.
+
+  - else
+    = link_to "Refresh", yelp_regrab_path, class: 'btn btn-info col-md-1' 
 
 %table.table.table-hover
   %thead

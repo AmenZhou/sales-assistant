@@ -47,6 +47,8 @@ gem 'thin'
 gem 'jquery-turbolinks'
 gem 'will_paginate'
 gem 'sidekiq'
+gem 'sidekiq-status'
+gem 'hiredis'
 group :production do
   gem 'pg'
   gem 'whenever'
