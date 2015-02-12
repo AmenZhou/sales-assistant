@@ -11,12 +11,20 @@ Category.destroy_all
   SalestoolCategory.create(name: category)
 end
 
-['SourthEast', 'Chinese', 'Mexican', 'European', 'American'].each do |country|
+['2014', '2015'].each do |year|
+  MeetingrecordCategory.create(name: year)
+end
+
+['展覽會', '行業會議', '行業協會', '政府部門'].each do |activity|
+  ActivityCategory.create(name: activity)
+end
+
+%w(中國 韓國 日本 越南 印度 法國 意大利 德國 西班牙 希臘 土耳其 墨西哥 美國 阿拉伯 猶太人 素食).each do |country|
   GlobalfoodCategory.create(name: country)
 end
 
-['2014', '2015'].each do |year|
-  MeetingrecordCategory.create(name: year)
+%w(成功案例 經驗教訓 新鮮點子 市場動態 客戶反饋).each do |expshare|
+  ExpshareCategory.create(name: expshare)
 end
 
 User.destroy_all
