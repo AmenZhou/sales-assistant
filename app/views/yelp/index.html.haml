@@ -2,7 +2,8 @@
   - if job_running? current_job_id
 
     = link_to "Refresh", yelp_regrab_path, class: 'btn btn-info col-md-1', id: 'refresh', disabled: true
-    %h4.col-md-11 Grab job is already running. If you want to re-grab, just waite few minutes and refresh the page.
+    %h4.col-md-11
+      = t('yelp.wait_for_refresh')
 
   - else
     = link_to "Refresh", yelp_regrab_path, class: 'btn btn-info col-md-1', id: 'refresh'

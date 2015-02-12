@@ -18,6 +18,7 @@
     </form>
     <%- if current_user %>
         <ul class="nav navbar-nav navbar-right col-md-4">
+          <li><%= link_to t('nav.grab_data'), yelp_path %></li>
           <li role="presentation" class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
             <%= t 'nav.boards'%><span class="caret"></span>

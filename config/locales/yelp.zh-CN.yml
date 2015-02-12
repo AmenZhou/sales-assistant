@@ -7,3 +7,4 @@ zh-CN:
     address: 地址
     city: 城市
     zipcode: 邮编
+    wait_for_refresh: 请耐心等待抓取，完成后页面会自动刷新！
