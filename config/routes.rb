@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  get 'yelp/index'
-  get 'yelp/regrab'
+  namespace :yelp do
+    get '/', action: :index
+    get 'regrab'
+    get 'check_job_status'
+  end
+  require 'sidekiq/web'
+  mount Sidekiq::Web, at: "/sidekiq"
 
   devise_for :users
   root 'home#index'

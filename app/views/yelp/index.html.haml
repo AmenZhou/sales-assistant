@@ -1,11 +1,11 @@
 .row
   - if job_running? current_job_id
 
-    = link_to "Refresh", yelp_regrab_path, class: 'btn btn-info col-md-1', disabled: true
+    = link_to "Refresh", yelp_regrab_path, class: 'btn btn-info col-md-1', id: 'refresh', disabled: true
     %h4.col-md-11 Grab job is already running. If you want to re-grab, just waite few minutes and refresh the page.
 
   - else
-    = link_to "Refresh", yelp_regrab_path, class: 'btn btn-info col-md-1' 
+    = link_to "Refresh", yelp_regrab_path, class: 'btn btn-info col-md-1', id: 'refresh'
 
 %table.table.table-hover
   %thead
@@ -37,3 +37,18 @@
         
         / %td= y.genre
 = will_paginate @yelps       
+
+:javascript
+  $('#refresh').click(function(){
+    myVar = setInterval(function(){
+      $.ajax({
+        url: "/yelp/check_job_status",
+        type: "GET",
+      }).done(function(msg){
+        if(msg == true){
+          clearInterval(myVar);
+          location.reload();
+        }
+      });
+    }, 1000);
+  })

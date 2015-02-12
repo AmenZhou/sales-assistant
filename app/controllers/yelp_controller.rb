@@ -10,6 +10,16 @@ class YelpController < ApplicationController
   	redirect_to action: :index
   end
 
+  def check_job_status
+    respond_to do |format|
+      if job_complete?(current_job_id)
+        format.json { render :text => "true" }
+      else
+        format.json { head :no_content }
+      end
+    end
+  end
+
   private
 
     def current_job_id
