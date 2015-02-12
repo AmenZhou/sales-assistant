@@ -122,7 +122,7 @@ class PostsController < ApplicationController
   end
 
   def check_authorization
-    raise 'authorization unaccessed' if controller_name == 'posts'
+    raise 'authorization unaccessed' if controller_name == 'posts' and action_name != 'by_quick_search'
   end
 
   def model_name
