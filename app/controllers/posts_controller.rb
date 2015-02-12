@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy, :show]
   before_action :check_authorization
-  before_action :set_categories, only: [:index, :create]
+  before_action :set_categories, only: [:index, :create, :by_category, :by_complex_search, :new]
 
   def index
     if params[:post_search]
@@ -136,7 +136,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :media_type, :tag_list, :category_id)
+    params.require(controller_name.singularize).permit(:title, :content, :tag_list, :category_id)
   end
 
   def post_search_params

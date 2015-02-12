@@ -9,7 +9,7 @@
     = render 'search_links_head'
 .row
   Categories
-  - Category.pluck(:name).each do |c|
+  - @categories.pluck(:name).each do |c|
     = link_to c, polymorphic_path([:by_category, controller.controller_name], category: c), class: 'btn btn-default'
 
 #posts_list

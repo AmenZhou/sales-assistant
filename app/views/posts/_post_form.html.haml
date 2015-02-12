@@ -5,8 +5,7 @@
 = render partial: 'shared/new_upload_files', locals: { upload_files: @post.try(:upload_files) }
 = simple_form_for @post, html: {id: 'post_form'} do |f|
   = f.input :title, input_html: { maxlength: 50}
-  = f.association :category, label_method: :name, value_method: :id, prompt: 'Select a category'
+  = f.association :category, collection: @categories, prompt: 'Select a category'
   = f.input :content, input_html: { maxlength: 1000 }
-  = f.input :tag_list, input_html: { value: @post.tag_list.try(:join, ', ') }
-  (separated by commas)
+  = f.input :tag_list, placeholder: 'sperated by commas', input_html: { value: @post.tag_list.try(:join, ', ') }
   = f.button :submit, 'Submit'
