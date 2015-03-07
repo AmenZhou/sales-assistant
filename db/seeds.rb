@@ -5,6 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'faker'
+
 Category.destroy_all
 
 ['產品介紹', 'Presentation', 'Proposal', '價格', '郵件範圍', '廣告範圍', '客戶反饋', '工作流程', '其他'].each do |category|

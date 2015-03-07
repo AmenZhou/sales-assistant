@@ -42,7 +42,6 @@ gem 'arel'
 gem "fog"
 gem 'remotipart', '~> 1.2'
 gem 'acts-as-taggable-on'
-gem 'thin'
 #gem 'masonry-rails'
 gem 'jquery-turbolinks'
 gem 'will_paginate'
@@ -54,4 +53,5 @@ gem 'hiredis'
 group :production do
   gem 'pg'
   gem 'whenever'
+  gem 'puma'
 end
