@@ -51,6 +51,12 @@ gem 'sidekiq-status'
 gem 'sinatra', require: false
 gem 'slim'
 gem 'hiredis'
+group :development do
+  gem 'capistrano', '~> 3.3.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails', '~> 1.1.2'
+end
 group :production do
   gem 'pg'
   gem 'whenever'
