@@ -15,7 +15,7 @@ role :db,  %w{action@sale.epoc.in}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'action@sale.epoc.in', user: 'action', roles: %w{web app}, my_property: :my_value
+server 'sale.epoc.in', user: 'action', roles: %w{web app}, my_property: :my_value
 
 
 # Custom SSH Options
@@ -28,7 +28,7 @@ server 'action@sale.epoc.in', user: 'action', roles: %w{web app}, my_property: :
   set :ssh_options, {
     keys: %w(/home/amen/.ssh/id_rsa),
     forward_agent: false,
-    auth_methods: %w(password),
+    auth_methods: %w(publickey),
     port: 24575
   }
 #

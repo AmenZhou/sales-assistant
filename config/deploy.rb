@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:AmenZhou/sales-assistant.git'
  ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app_name
- set :deploy_to, '/home/action/www/sales-assistant'
+ set :deploy_to, '/home/action/workspace/www/sales-assistant'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -23,7 +23,7 @@ set :repo_url, 'git@github.com:AmenZhou/sales-assistant.git'
 # set :pty, true
 
 # Default value for :linked_files is []
- set :linked_files, fetch(:linked_files, []).push('config/database.yml')
+ set :linked_files, fetch(:linked_files, []).push('config/database.yml' , 'config/local_env.yml')
 
 # Default value for linked_dirs is []
  set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
@@ -33,7 +33,8 @@ set :repo_url, 'git@github.com:AmenZhou/sales-assistant.git'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-
+set :chruby_ruby, 'ruby-2.2.0'
+set :chruby_exec, '/home/action/.parts/bin/chruby-exec'
 set :rails_env, 'production'
 set :puma_config_path, -> { File.join(current_path, "config", "puma.rb") }
 set :puma_pid,  -> { File.join(shared_path, "tmp", "pids", "puma.group.pid") }

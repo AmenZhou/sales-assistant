@@ -52,7 +52,7 @@ gem 'slim'
 gem 'hiredis'
 group :development do
   gem 'capistrano', '~> 3.3.0'
-  gem 'capistrano-rvm'
+  gem 'capistrano-chruby'
   gem 'capistrano-bundler'
   gem 'capistrano-rails', '~> 1.1.2'
 end
