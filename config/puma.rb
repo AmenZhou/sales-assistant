@@ -1,6 +1,6 @@
 user = "action"
 application = "sales-assistant"
-path = "/home/#{user}/workspace/www/sales-assistant"
+path = "/home/#{user}/workspace/www/sales-assistant/shared"
  
 port 5000
 threads 0, 4

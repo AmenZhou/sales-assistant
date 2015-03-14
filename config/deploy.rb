@@ -37,7 +37,7 @@ set :chruby_ruby, 'ruby-2.2.0'
 set :chruby_exec, '/home/action/.parts/bin/chruby-exec'
 set :rails_env, 'production'
 set :puma_config_path, -> { File.join(current_path, "config", "puma.rb") }
-set :puma_pid,  -> { File.join(shared_path, "tmp", "pids", "puma.group.pid") }
+set :puma_pid,  -> { File.join(shared_path, "tmp", "pids", "puma.sales-assistant.pid") }
 
 namespace :deploy do
 
@@ -58,7 +58,7 @@ namespace :deploy do
       else
         within current_path do
           execute :bundle, "exec puma", "--config", fetch(:puma_config_path), "-e", fetch(:rails_env), "-d"
-          invoke 'delayed_job:restart'
+          #invoke 'delayed_job:restart'
         end
       end
     end
