@@ -60,4 +60,5 @@ group :production do
   gem 'pg'
   gem 'whenever'
   gem 'puma'
+  gem 'rails_12factor'
 end
