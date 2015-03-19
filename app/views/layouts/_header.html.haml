@@ -1,0 +1,38 @@
+%nav#header.navbar.navbar-default{:role => "navigation"}
+  .container-fluid
+    .navbar-header.col-md-3
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a{"data-no-turbolink" => "true", :href => "/"}
+        %h3{:style => "margin-top: 12px;"}= t 'nav.sales_assistant_system'
+    #navbar-collapse.collapse.navbar-collapse
+      = form_tag '/posts/by_quick_search', class: "navbar-form navbar-left col-md-4", role: "search", method: :get do
+        .form-group
+          %input.form-control{:name => "query", :placeholder => "#{t 'nav.search'}", :type => "text"}/
+        %button.btn.btn-default{:type => "submit"}= t 'nav.submit'
+      - if current_user
+        %ul.nav.navbar-nav.navbar-right.col-md-4
+          %li= link_to t('nav.grab_data'), yelp_path
+          %li.dropdown{:role => "presentation"}
+            %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              = t 'nav.boards'
+              %span.caret
+            %ul.dropdown-menu{:role => "menu"}
+              %li= link_to t('board.sales_tools'), sales_tools_path
+              %li= link_to t('board.experience_share'), expshare_posts_path
+              %li= link_to t('board.activities'), activity_posts_path
+              %li= link_to t('board.global_foods'), globalfood_posts_path
+              %li= link_to t('board.meeting_records'), meetingrecord_posts_path
+              %li= link_to t('board.evaluations'), evaluation_posts_path
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :role => "button"}
+              = current_user.username || current_user.email
+              %span.caret
+            %ul.dropdown-menu{:role => "menu"}
+              %li{:role => "presentation"}
+                = link_to 'Log out', destroy_user_session_path, method: :delete
+                = link_to 'Profile', mine_profile_path
+      - else

@@ -21,7 +21,7 @@ group :development, :test do
   gem "better_errors"
 end
 gem 'yelp'
-gem 'haml-rails'
+gem "haml-rails", "~> 0.9"
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
