@@ -1,8 +1,15 @@
-%h2 Log in
-.col-md-6
-  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    = f.input :email, required: false, autofocus: true
-    = f.input :password, required: false
-    = f.input :remember_me, as: :boolean, wrapper: :checkbox if devise_mapping.rememberable?
-    = f.button :submit, "Log in"
-  = render "devise/shared/links"
+.jumbotron{ style: "background-color: #D3E4EE;"}
+  .container
+    .col-md-offset-3
+      %h2 Log in
+      .col-md-6
+        = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .input-group.form-group
+            %span.input-group-addon Email:
+            = f.input_field :email, required: false, autofocus: true, class: "form-control"
+          .input-group.form-group
+            %span.input-group-addon Password:
+            = f.input_field :password, required: false, class: "form-control"
+          = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+          = f.button :submit, "Log in", class: "btn btn-primary"
+        = render "devise/shared/links"
