@@ -1,6 +1,6 @@
 %nav#header.navbar.navbar-default{:role => "navigation"}
   .container-fluid
-    .navbar-header.col-md-3
+    .navbar-header
       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
@@ -9,12 +9,12 @@
       %a{"data-no-turbolink" => "true", :href => "/"}
         %h3{:style => "margin-top: 12px;"}= t 'nav.sales_assistant_system'
     #navbar-collapse.collapse.navbar-collapse
-      = form_tag '/posts/by_quick_search', class: "navbar-form navbar-left col-md-4", role: "search", method: :get do
+      = form_tag '/posts/by_quick_search', class: "navbar-form navbar-left", id: "nav_search", role: "search", method: :get do
         .form-group
-          %input.form-control{:name => "query", :placeholder => "#{t 'nav.search'}", :type => "text"}/
+          %input.form-control.col-md-6{:name => "query", :placeholder => "#{t 'nav.search'}", :type => "text"}/
         %button.btn.btn-default{:type => "submit"}= t 'nav.submit'
       - if current_user
-        %ul.nav.navbar-nav.navbar-right.col-md-4
+        %ul.nav.navbar-nav.navbar-right
           %li= link_to t('nav.grab_data'), yelp_path
           %li.dropdown{:role => "presentation"}
             %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
