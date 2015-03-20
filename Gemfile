@@ -45,6 +45,7 @@ gem 'acts-as-taggable-on'
 #gem 'masonry-rails'
 gem 'jquery-turbolinks'
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'sidekiq'
 gem 'sidekiq-status'
 gem 'sinatra', require: false

@@ -9,5 +9,5 @@ class Post < ActiveRecord::Base
 
   scope :by_quick_search, ->(query) { joins(:upload_files).where('title like :query OR content like :query OR upload_files.image like :query', query: "%#{query}%") }
 
-  self.per_page = 10
+  self.per_page = 20
 end

@@ -440,6 +440,8 @@ GEM
     whenever (0.9.4)
       chronic (>= 0.6.3)
     will_paginate (3.0.7)
+    will_paginate-bootstrap (1.0.1)
+      will_paginate (>= 3.0.3)
     with_template (0.0.6)
       blocks (~> 2.6.3)
       rails (>= 3.0.0)
@@ -505,4 +507,5 @@ DEPENDENCIES
   web-console (~> 2.0.0.beta2)
   whenever
   will_paginate
+  will_paginate-bootstrap
   yelp

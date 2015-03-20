@@ -26,5 +26,5 @@
   .col-md-10
     #posts_list
       = render partial: 'posts_list', :posts => @posts
-  = will_paginate @posts
+      = will_paginate @posts, renderer: BootstrapPagination::Rails
 
