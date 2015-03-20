@@ -15,8 +15,7 @@
           = link_to category.name, polymorphic_path(controller.controller_name, 'post_search[category_id]' => category.id), class: 'btn btn-primary'
 .row.normal-row
   .col-md-6
-    = link_to 'New Post', "/#{controller.controller_name}/new", class: "btn btn-primary"
-    = link_to 'Clear search', polymorphic_path([:clear, controller.controller_name]), class: "btn btn-warning"
+    = link_to t("board.new_post"), "/#{controller.controller_name}/new", class: "btn btn-primary"
   .align-right
     = link_to 'Search Tools', polymorphic_path([:by_complex_search, controller.controller_name]), class: 'btn btn-primary'
 

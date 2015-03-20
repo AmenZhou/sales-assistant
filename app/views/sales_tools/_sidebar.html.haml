@@ -1,4 +1,5 @@
 %ul.nav.nav-sidebar
+  = link_to t("board.clear_search"), polymorphic_path([:clear, controller.controller_name]), class: "btn btn-warning btn-sm"
   %h4
     %b= t("board.user")
   .option-group

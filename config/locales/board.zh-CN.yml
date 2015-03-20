@@ -14,3 +14,5 @@ zh-CN:
     user: 用戶
     tags: 標籤
     media_type: 媒體類型
+    new_post: 發佈
+    clear_search: 清除搜索條件
