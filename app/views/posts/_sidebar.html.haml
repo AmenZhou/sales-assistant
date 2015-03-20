@@ -1,16 +1,19 @@
 %ul.nav.nav-sidebar
   %h4
-    %b User
-  - User.all.each do |user|
-    %li
-    - if current_user.tmp_params[:user_id].to_i == user.id 
-      = link_to user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id ), class: "active"
-    - else
-      = link_to user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id )
-  %h4 Tags
-  - model_name.tag_counts.each do |tag|
-    %li
-    - if current_user.tmp_params[:tag] == tag.name
-      = link_to tag.name, polymorphic_path(current_controller, 'post_search[tag]' => tag.name), class: "active"
-    - else
-      = link_to tag.name, polymorphic_path(current_controller, 'post_search[tag]' => tag.name)
+    %b= t("board.user")
+  .option-group
+    - User.all.each do |user|
+      %li
+      - if current_user.tmp_params[:user_id].to_i == user.id 
+        = link_to user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id ), class: "active"
+      - else
+        = link_to user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id )
+  %h4
+    %b= t("board.tags")
+  .option-group
+    - model_name.tag_counts.each do |tag|
+      %li
+      - if current_user.tmp_params[:tag] == tag.name
+        = link_to tag.name, polymorphic_path(current_controller, 'post_search[tag]' => tag.name), class: "active"
+      - else
+        = link_to tag.name, polymorphic_path(current_controller, 'post_search[tag]' => tag.name)
