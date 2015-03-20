@@ -1,0 +1,15 @@
+.sidebar {
+  background-color: white;
+  a {
+    color: gray;
+    font-size: 16px;
+    line-height: 150%;
+  }
+  a.active {
+    color: black;
+  }
+
+  .option-group {
+    margin-bottom: 30px;
+  }
+}

@@ -10,9 +10,9 @@
     - @categories.each do |category|
       .btn-group
         - if current_user.tmp_params["category_id"].to_i == category.id 
-          = link_to category.name, polymorphic_path(controller.controller_name, 'post_search[category_id]' => category.id), class: 'btn btn-default active'
+          = link_to category.name, polymorphic_path(controller.controller_name, 'post_search[category_id]' => category.id), class: 'btn btn-primary active'
         - else
-          = link_to category.name, polymorphic_path(controller.controller_name, 'post_search[category_id]' => category.id), class: 'btn btn-default'
+          = link_to category.name, polymorphic_path(controller.controller_name, 'post_search[category_id]' => category.id), class: 'btn btn-primary'
 .row.normal-row
   .col-md-6
     = link_to 'New Post', "/#{controller.controller_name}/new", class: "btn btn-primary"
