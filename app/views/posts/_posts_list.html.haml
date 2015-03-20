@@ -1,4 +1,4 @@
-%table.table.table-hover
+%table.table.table-hover.post-list
   %thead
     %tr
       %th= t('table.title')
@@ -13,14 +13,14 @@
   - @posts.each_with_index do |post,i|
     %tbody
       %tr
-        %td= link_to "#{post.title}", polymorphic_path(post)
-        %td= post.content
+        %td{title: post.title}= link_to "#{truncate(post.title, length: 20)}", polymorphic_path(post)
+        %td{title: post.content}= truncate(post.content, length: 20)
         - if post.category
           %td= link_to post.category.try(:name), polymorphic_path([:by_category, post.class], category: post.category.try(:name) || '')
         - else
           %td
         %td= link_to post.user.try(:email), polymorphic_path([:by_username, post.class], username: post.user.try(:email))
-        %td= post.updated_at.strftime("%R %D")
+        %td.time-tag= post.updated_at.strftime("%R %D")
         - if post.media_type
           %td= link_to post.media_type, polymorphic_path([:by_media_type, post.class], media_type: post.media_type || '')
         - else
