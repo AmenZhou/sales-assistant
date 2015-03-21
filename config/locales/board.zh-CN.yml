@@ -16,3 +16,8 @@ zh-CN:
     media_type: 媒體類型
     new_post: 發佈
     clear_search: 清除搜索條件
+    author_name: 發布者
+    category: 目錄
+    updated_at: 更新日期
+    content: 詳細內容
+    files: 文件

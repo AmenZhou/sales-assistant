@@ -1,27 +1,29 @@
-.jumbotron
-  .col-md-offset-3
-    %h1
+.jumbotron.row
+  .col-md-8.col-md-offset-2
+    %h1.col-md-offset-4
       = @post.title
-    .table-form
-      .row
-        .col-md-7
-          = @post.user.try(:username) || @post.user.try(:email)
-      .row
-        .col-md-7
-          = @post.updated_at
-      .row
-        .col-md-7
+    %ul.list-group
+      - if @post.category.present?
+        %li.list-group-item
+          .label.label-info=t("board.category")
           = @post.category.try(:name)
-      .row
-        .col-md-7
-          = @post.content
-      .row
-        .col-md-7
-          = @post.tag_list
-      .row
-        .col-md-7
+      %li.list-group-item
+        %span.label.label-info=t("board.content")
+        = @post.content
+      %li.list-group-item
+        %span.label.label-info=t("board.tags")
+        = @post.tag_list
+      - if @post.media_type.present?
+        %li.list-group-item
+          %span.label.label-info=t("board.media_type")
           = @post.media_type
-      .row
-        .col-md-7
-          = render partial: 'posts/upload_files', locals: { upload_files: @post.upload_files }
+      %li.list-group-item
+        .label.label-info=t("board.updated_at")
+        = @post.updated_at
+      %li.list-group-item
+        %span.label.label-info=t("board.author_name")
+        = @post.user.try(:username) || @post.user.try(:email)
+      %li.list-group-item
+        %span.label.label-info=t("board.files")
+        = render partial: 'posts/upload_files', locals: { upload_files: @post.upload_files }
 

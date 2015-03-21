@@ -3,4 +3,4 @@
     %li.list-group-item
       = file_icon(file)
       = file.try(:image).try(:file).try(:filename)
-      = link_to 'Download', download_file_upload_file_path(file)
+      = link_to 'Download', download_file_upload_file_path(file), class: "btn btn-primary"
