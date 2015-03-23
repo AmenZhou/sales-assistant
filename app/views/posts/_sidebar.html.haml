@@ -12,9 +12,10 @@
   %h4
     %b= t("board.tags")
   .option-group
-    - model_name.tag_counts.each do |tag|
-      %li
-      - if current_user.tmp_params[:tag] == tag.name
-        = link_to tag.name, polymorphic_path(current_controller, 'post_search[tag]' => tag.name), class: "active"
-      - else
-        = link_to tag.name, polymorphic_path(current_controller, 'post_search[tag]' => tag.name)
+    %li
+      - model_name.tag_counts.each do |tag|
+        = content_tag :span do
+          - if current_user.tmp_params[:tag] == tag.name
+            = link_to tag.name, polymorphic_path(current_controller, 'post_search[tag]' => tag.name), class: "active"
+          - else
+            = link_to tag.name, polymorphic_path(current_controller, 'post_search[tag]' => tag.name)
