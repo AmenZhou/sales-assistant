@@ -5,9 +5,9 @@ class YelpController < ApplicationController
   end
 
   def regrab
-  	job_id = YelpGrabWorker.perform_async('bob', 5)
-  	set_current_job_id job_id
-  	redirect_to action: :index
+    #job_id = YelpGrabWorker.perform_async('bob', 5)
+    #set_current_job_id job_id
+    #redirect_to action: :index
   end
 
   def check_job_status
