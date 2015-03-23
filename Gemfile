@@ -12,8 +12,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails-html-sanitizer', '~> 1.0'
 gem 'chosen-rails'
+gem 'faker'
 group :development, :test do
-  gem 'faker'
   gem 'byebug'
   gem 'web-console', '~> 2.0.0.beta2'
   gem 'spring'
