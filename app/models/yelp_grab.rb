@@ -13,7 +13,7 @@ class YelpGrab < ActiveRecord::Base
         yp.name = business.try('name')
         yp.phone_num = business.try('display_phone')
         yp.url = business.try('url')
-        yp.city = business.try('location').try('neighborhoods')
+        yp.city = business.try('location').try('neighborhoods').try(:join, ", ")
         yp.zipcode = business.try('location').try('postal_code')
         yp.address = business.try('location').try('address').try(:first)
         yp.state = business.try(:location).try(:state_code)
