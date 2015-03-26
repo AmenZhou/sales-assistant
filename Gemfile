@@ -51,6 +51,8 @@ gem 'sidekiq-status'
 gem 'sinatra', require: false
 gem 'slim'
 gem 'hiredis'
+gem 'watir-webdriver' 
+gem 'watir-scroll'
 group :development do
   gem 'capistrano', '~> 3.3.0'
   gem 'capistrano-chruby'

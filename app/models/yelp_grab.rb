@@ -1,35 +1,26 @@
 #require_relative '../../lib/yelp'
 class YelpGrab < ActiveRecord::Base
 
-  before_save :set_cross_street
-
   self.per_page = 10
-  def YelpGrab::grab
+  def YelpGrab::grab area = "NYC", keywords = "restaurants"
     begin_time = Time.now
-    (1..30).each do |i|
-    begin
-      rs = Yelp.client.search('NYC', { term: 'best restaurants for restaurant week',
+    (1..50).each do |i|
+      rs = Yelp.client.search(area, { term: keywords,
                                       limit: 20, 
                                      offset: (i * 20)})
-    rescue Exception => e
-      logger.fatal e
-      break
-    end
-    rs.businesses.each do |business|
-      yp = YelpGrab.find_or_create_by(yelp_id: business.id)
-      yp.update_attributes(
-        name: business.try('name'),
-        phone_num: business.try('display_phone'),
-        url: business.try('url'),
-        city: business.try('location').try('neighborhoods'),
-        zipcode: business.try('location').try('postal_code'),
-        address: business.try('location').try('address'),
-        state: business.try(:location).try(:state_code),
-        country: business.try(:location).try(:country_code),
-        address_remark: business.try(:location).try(:cross_streets),
-        rating: business.try('rating'),
-        genre: business.try('categories').try(:join, ' ')
-      )
+      rs.businesses.each do |business|
+        yp = YelpGrab.find_or_create_by(yelp_id: business.id)
+        yp.name = business.try('name')
+        yp.phone_num = business.try('display_phone')
+        yp.url = business.try('url')
+        yp.city = business.try('location').try('neighborhoods')
+        yp.zipcode = business.try('location').try('postal_code')
+        yp.address = business.try('location').try('address')
+        yp.state = business.try(:location).try(:state_code)
+        yp.country = business.try(:location).try(:country_code)
+        yp.address_remark = cross_streets(business)
+        yp.rating = business.try('rating')
+        yp.genre = business.categories.map(&:first).join(", ") if business.categories
       end
     end
     end_time = Time.now
@@ -47,8 +38,7 @@ class YelpGrab < ActiveRecord::Base
 
   private
 
-  def set_cross_street
-    self.cross_street = cross_street.join(", ") if cross_street
-    true
+  def self.cross_streets business
+    business.try(:location).try(:cross_streets)
   end
 end
