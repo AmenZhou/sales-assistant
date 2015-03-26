@@ -37,6 +37,47 @@ class YelpGrab < ActiveRecord::Base
     end
   end
 
+  require 'open-uri'
+  require 'watir-webdriver'
+
+  def self.browser_grab url
+    
+    (1..5).each do |page|
+	    request_url = url + '#' + "start=#{page * 10}"
+	    client = Selenium::WebDriver::Remote::Http::Default.new
+	    client.timeout = 60
+	    browser = Watir::Browser.new :firefox, :http_client => client
+	    browser.goto request_url
+
+	    browser.ul(class: "search-results").wait_until_present
+	    doc = get_doc_by_browser(browser)
+            parse_doc(doc)
+	    p "Finish One page"
+	    browser.close
+	    client.close
+    end
+  end
+
+  def self.get_doc_by_browser(browser)
+    Nokogiri::HTML.parse(browser.html)
+  end
+
+  def self.parse_doc(doc)
+    doc.css("ul.search-results").css(".search-result").each do |item|
+      biz_address = item.css("address").text.strip
+      yp = YelpGrab.find_or_initialize_by(name: biz_address)
+      biz_name = item.css("a.biz-name").text.strip
+      yp_url = item.css("a.biz-name").attribute("href").value
+      yp.rating = item.css(".rating-large").css("i").attribute("title").value.strip
+      yp.genre = item.css(".category-str-list").css("a").text.strip
+      yp.city = item.css(".neighborhood-str-list").text.strip
+      yp.zipcode = biz_address.match(/\d{5}\Z/).to_s
+      yp.phone_num = item.css(".biz-phone").text.strip
+      yp.save!
+      print "."
+    end 
+  end
+
   private
 
   def self.cross_streets business
