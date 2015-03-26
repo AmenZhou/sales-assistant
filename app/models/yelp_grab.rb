@@ -15,12 +15,13 @@ class YelpGrab < ActiveRecord::Base
         yp.url = business.try('url')
         yp.city = business.try('location').try('neighborhoods')
         yp.zipcode = business.try('location').try('postal_code')
-        yp.address = business.try('location').try('address')
+        yp.address = business.try('location').try('address').try(:first)
         yp.state = business.try(:location).try(:state_code)
         yp.country = business.try(:location).try(:country_code)
         yp.address_remark = cross_streets(business)
         yp.rating = business.try('rating')
         yp.genre = business.categories.map(&:first).join(", ") if business.categories
+        yp.save!
       end
     end
     end_time = Time.now
