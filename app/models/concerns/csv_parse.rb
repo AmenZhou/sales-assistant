@@ -1,6 +1,6 @@
 module CsvParse
   #input a csv file and output an array of params
-  extend ActiveRecord::Concern
+  extend ActiveSupport::Concern
   def csv_parse path
     lines = File.readlines(path)
     titles = lines.shift.gsub("\n", '').split(',').map(&:underscore)
