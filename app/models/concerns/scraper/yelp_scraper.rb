@@ -6,22 +6,27 @@ module Scraper
   extend ActiveSupport::Concern
 
     module ClassMethods
-      def browser_grab url
-        (1..99).each do |page|
-          request_url = url + '&' + "start=#{page * 10}"
-          client = Selenium::WebDriver::Remote::Http::Default.new
-          client.timeout = 60
-          browser = Watir::Browser.new :firefox, :http_client => client
-          browser.goto request_url
+      def browser_grab url, options = {}
+        (0..99).each do |page|
+          @request_url = url + '&' + "start=#{page * 10}"
+          @client = Selenium::WebDriver::Remote::Http::Default.new
+          @client.timeout = 60
+          @browser = Watir::Browser.new :firefox, :http_client => @client
+          @browser.goto @request_url
 
-          browser.ul(class: "search-results").wait_until_present
-          doc = get_doc_by_browser(browser)
-          parse_doc(doc, borough: nil, primary_industry: "Food", country: "US", state: "NY")
+          @browser.ul(class: "search-results").wait_until_present
+          doc = get_doc_by_browser(@browser)
+          parse_doc(doc, options.merge({ country: "US", state: "NY" }))
           p "Finish One page"
-          record_log("Finish one page: " + request_url)
-          browser.close
-          client.close
+          record_log("Finish one page: " + @request_url)
+          @browser.close
+          @client.close
         end
+      rescue => e
+        p e
+        record_log("Error #{e} --" + @request_url)
+        @browser.close
+        @client.close
       end
 
       def get_doc_by_browser(browser)
@@ -48,7 +53,7 @@ module Scraper
 
       def record_log(logs)
         my_logger ||= Logger.new("#{Rails.root}/log/grab.log")
-        my_logger.info("Record log at #{Time.zone.now}: " + logs)
+        my_logger.info(logs)
       end
 
       def grab area = "NYC", keywords = "restaurants"
