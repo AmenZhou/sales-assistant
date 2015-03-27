@@ -7,6 +7,9 @@ class YelpGrab < ActiveRecord::Base
   self.per_page = 10
 
   def self.cvs_import path
-    csv_parse(path).each { |params| new(params).save }
+    csv_parse(path).each do |params|
+      yp = find_or_initialize_by(address: params["address"])
+      yp.update!(params)
+    end
   end
 end
