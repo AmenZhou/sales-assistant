@@ -9,7 +9,7 @@ class YelpGrab < ActiveRecord::Base
                                       limit: 20, 
                                      offset: (i * 20)})
       rs.businesses.each do |business|
-        yp = YelpGrab.find_or_create_by(yelp_id: business.id)
+        yp = YelpGrab.find_or_intialize_by(yelp_id: business.id)
         yp.name = business.try('name')
         yp.phone_num = business.try('display_phone')
         yp.url = business.try('url')
