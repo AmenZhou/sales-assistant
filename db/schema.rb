@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325164041) do
+ActiveRecord::Schema.define(version: 20150326201237) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20150325164041) do
     t.text     "address_remark"
     t.text     "remark"
     t.string   "assign_to"
+    t.string   "borough"
   end
 
 end
