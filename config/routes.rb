@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   namespace :yelp do
     get '/', action: :index
-    get 'regrab'
-    get 'check_job_status'
+    get "export_data"
+    #get 'regrab'
+    #get 'check_job_status'
   end
   require 'sidekiq/web'
   mount Sidekiq::Web, at: "/sidekiq"
