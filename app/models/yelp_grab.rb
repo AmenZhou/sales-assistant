@@ -15,56 +15,57 @@ class YelpGrab < ActiveRecord::Base
 
   def self.grab_all
     yelp_urls = [
-           {url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:[Alphabet_City,Battery_Park,Chelsea]",
+           {
+            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:Theater_District",
             borough: "Manhattan",
             primary_industry: "restaurant"
            },
            {
-            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:[Chinatown,Civic_Center,East_Harlem]",
+            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:Upper_East_Side",
             borough: "Manhattan",
             primary_industry: "restaurant"
            },
            {
-            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:East_Village",
+            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:[Upper_West_Side,Washington_Heights]",
             borough: "Manhattan",
             primary_industry: "restaurant"
            },
            {
-            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:[Flatiron,Gramercy]",
+            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Brooklyn:Bay_Ridge",
+            borough: "Brooklyn",
+            primary_industry: "restaurant"
+           },
+           {
+            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:West_Village",
             borough: "Manhattan",
             primary_industry: "restaurant"
            },
            {
-            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:[Harlem,Inwood,Kips_Bay]",
+            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Brooklyn:[Bath_Beach,Bergen_Beach,Boerum_Hill]",
+            borough: "Brooklyn",
+            primary_industry: "restaurant"
+           },
+           {
+            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:Yorkville",
             borough: "Manhattan",
             primary_industry: "restaurant"
            },
            {
-            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:Hell%27s_Kitchen",
-            borough: "Manhattan",
+            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Brooklyn:[Bedford_Stuyvesant,Bensonhurst]",
+            borough: "Brooklyn",
             primary_industry: "restaurant"
            },
            {
-            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:[Koreatown,Little_Italy,Lower_East_Side,Manhattan_Valley]",
-            borough: "Manhattan",
+            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Brooklyn:[Borough_Park,Brighton_Beach,Brooklyn_Heights,Brownsville,Canarsie,Carroll_Gardens,City_Line]",
+            borough: "Brooklyn",
             primary_industry: "restaurant"
            },
            {
-            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:[Marble_Hill,Meatpacking_District,Morningside_Heights,Murray_Hill,NoHo,Nolita,Roosevelt_Island,SoHo,South_Street_Seaport]",
-            borough: "Manhattan",
+            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Brooklyn:[Bushwick,Clinton_Hill,Cobble_Hill,Columbia_Street_Waterfront_District,Coney_Island]",
+            borough: "Brooklyn",
             primary_industry: "restaurant"
            },
-           {
-            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:[South_Village,Stuyvesant_Town,TriBeCa,Two_Bridges,Union_Square]",
-            borough: "Manhattan",
-            primary_industry: "restaurant"
-           },
-           {
-            url: "http://www.yelp.com/search?find_desc=&find_loc=ny&ns=1&cflt=restaurants&l=p:NY:New_York:Manhattan:[Financial_District,Greenwich_Village]",
-            borough: "Manhattan",
-            primary_industry: "restaurant"
-           },
-   ]
+    ]
 
 
     yelp_urls.each do |yelp_url|
