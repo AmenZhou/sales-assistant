@@ -21,3 +21,6 @@ zh-CN:
     updated_at: 更新日期
     content: 詳細內容
     files: 文件
+    title: 標題
+    upload_file: 上傳文件
+    create_post: 發佈共享

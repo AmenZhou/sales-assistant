@@ -1,12 +1,35 @@
-= simple_form_for UploadFile.new, remote: true do |f|
-  = f.input :image
-  = f.button :submit, 'Upload File'
+.jumbotron
+  .container
+    .col-md-offset-1
+      = simple_form_for UploadFile.new, html: { class: "form-horizontal" }, remote: true do |f|
+        .form-group
+          %label.control-label.col-md-2= t("board.files")
+          .col-md-7
+            = f.input_field :image, class: "form-control"
+        .col-md-offset-2
+          = f.button :submit, t("board.upload_file"), class: "btn btn-default"
 
-= render partial: 'shared/new_upload_files', locals: { upload_files: @post.try(:upload_files) }
-= simple_form_for @post, html: {id: 'post_form'} do |f|
-  = f.input :title, input_html: { maxlength: 50}
-  = f.association :category, collection: @categories, prompt: 'Select a category'
-  = f.input :content, input_html: { maxlength: 1000 }
-  = f.input :media_type, collection: Post::MediaType, prompt: 'Select a media type...'
-  = f.input :tag_list, placeholder: 'sperated by commas', input_html: { value: @post.tag_list.try(:join, ', ') }
-  = f.button :submit, 'Submit'
+      = render partial: 'shared/new_upload_files', locals: { upload_files: @post.try(:upload_files) }
+      = simple_form_for @post, html: {id: 'post_form', class: "form-horizontal"} do |f|
+        .form-group
+          %label.control-label.col-md-2= t("board.title")
+          .col-md-7
+            = f.input_field :title, input_html: { maxlength: 50}, class: "form-control"
+        .form-group
+          %label.control-label.col-md-2= t("board.category")
+          .col-md-7
+            = f.input_field :category, collection: @categories, prompt: 'Select a category', class: "form-control"
+        .form-group
+          %label.control-label.col-md-2= t("board.content")
+          .col-md-7
+            = f.input_field :content, input_html: { maxlength: 1000 }, class: "form-control"
+        .form-group
+          %label.control-label.col-md-2= t("board.media_type")
+          .col-md-7
+            = f.input_field :media_type, collection: Post::MediaType, prompt: 'Select a media type...', class: "form-control"
+        .form-group
+          %label.control-label.col-md-2= t("board.tag")
+          .col-md-7
+            = f.input_field :tag_list, placeholder: 'sperated by commas', input_html: { value: @post.tag_list.try(:join, ', ') }, class: "form-control"
+        .col-md-offset-2
+          = f.button :submit, 'Submit', class: "btn btn-default"
