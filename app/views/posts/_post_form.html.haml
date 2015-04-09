@@ -24,7 +24,7 @@
           .col-md-7
             = f.input_field :content, input_html: { maxlength: 1000 }, class: "form-control"
         .form-group
-          %label.control-label.col-md-2= t("board.tag")
+          %label.control-label.col-md-2= t("board.tags")
           .col-md-7
             = f.input_field :tag_list, placeholder: 'sperated by commas', input_html: { value: @post.tag_list.try(:join, ', ') }, class: "form-control"
         .col-md-offset-2
