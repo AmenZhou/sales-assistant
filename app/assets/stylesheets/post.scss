@@ -24,3 +24,9 @@
 .list-group .list-group-item .label {
   font-size: 16px;
 }
+
+ul.post-show {
+  span.label {
+    float: right;
+  }
+}

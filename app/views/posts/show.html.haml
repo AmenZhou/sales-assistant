@@ -2,28 +2,49 @@
   .col-md-8.col-md-offset-2
     %h1.col-md-offset-4
       = @post.title
-    %ul.list-group
+    %ul.list-group.post-show
       - if @post.category.present?
         %li.list-group-item
-          .label.label-info=t("board.category")
-          = @post.category.try(:name)
+          .row
+            .col-md-2
+              %span.label.label-info=t("board.category")
+            .col-md-6
+              = @post.category.try(:name)
       %li.list-group-item
-        %span.label.label-info=t("board.content")
-        = @post.content
+        .row
+          .col-md-2
+            %span.label.label-info=t("board.content")
+          .col-md-8
+            = @post.content
       %li.list-group-item
-        %span.label.label-info=t("board.tags")
-        = @post.tag_list
+        .row
+          .col-md-2
+            %span.label.label-info=t("board.tags")
+          .col-md-6
+            = @post.tag_list
       - if @post.media_type.present?
         %li.list-group-item
-          %span.label.label-info=t("board.media_type")
-          = @post.media_type
+          .row
+            .col-md-2
+              %span.label.label-info=t("board.media_type")
+            .col-md-6
+              = @post.media_type
       %li.list-group-item
-        .label.label-info=t("board.updated_at")
-        = @post.updated_at
+        .row
+          .col-md-2
+            .label.label-info=t("board.updated_at")
+          .col-md-6
+            = @post.updated_at.strftime('%m-%d-%Y %I:%M %P')
       %li.list-group-item
-        %span.label.label-info=t("board.author_name")
-        = @post.user.try(:username) || @post.user.try(:email)
+        .row
+          .col-md-2
+            %span.label.label-info=t("board.author_name")
+          .col-md-6
+            = @post.user.try(:username) || @post.user.try(:email)
       %li.list-group-item
-        %span.label.label-info=t("board.files")
-        = render partial: 'posts/upload_files', locals: { upload_files: @post.upload_files }
+        .row
+          .col-md-2
+            %span.label.label-info=t("board.files")
+          .col-md-6
+            = render partial: 'posts/upload_files', locals: { upload_files: @post.upload_files }
 
