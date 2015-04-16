@@ -6,9 +6,19 @@
     - User.all.each do |user|
       %li
       - if current_user.tmp_params[:user_id].to_i == user.id 
-        = link_to user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id ), class: "active"
+        = link_to user.username || user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id ), class: "active"
       - else
-        = link_to user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id )
+        = link_to user.username || user.email, polymorphic_path(current_controller, 'post_search[user_id]' => user.id )
+  - if current_controller == "sales_tools_controller"
+    %h4
+      %b= t("board.media_type")
+    .option-group
+      - Post::MediaType.each do |type|
+        %li
+        - if current_user.tmp_params[:media_type] == type 
+          = link_to type, polymorphic_path(current_controller, 'post_search[media_type]' => type ), class: "active" 
+        - else
+          = link_to type, polymorphic_path(current_controller, 'post_search[media_type]' => type )
   %h4
     %b= t("board.tags")
   .option-group

@@ -23,6 +23,11 @@
           %label.control-label.col-md-2= t("board.content")
           .col-md-7
             = f.input_field :content, input_html: { maxlength: 1000 }, class: "form-control"
+        - if current_controller == "sales_tools_controller"
+          .form-group
+            %label.control-label.col-md-2= t("board.media_type")
+            .col-md-7
+              = f.input_field :media_type, collection: Post::MediaType, prompt: 'Select a media type...', class: "form-control"
         .form-group
           %label.control-label.col-md-2= t("board.tags")
           .col-md-7
