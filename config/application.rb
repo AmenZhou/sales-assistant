@@ -5,7 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
 module SalesAssistant
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -29,16 +29,6 @@ module SalesAssistant
 
     config.generators do |g|
       g.test_framework :rspec
-    end
-    config.before_configuration do
-      env_file = File.join(Rails.root, 'config', 'local_env.yml')
-      YAML.load(File.open(env_file)).each do |key, value|
-        if key == Rails.env
-          value.each do |key, value|
-            ENV[key.to_s] = value
-          end
-        end
-      end if File.exists?(env_file)
     end
   end
 end

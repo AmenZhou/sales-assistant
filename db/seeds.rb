@@ -37,18 +37,18 @@ Post.destroy_all
 tags = Faker::Lorem.words(10)
 
 puts 'create posts'
-50.times.each do
+5.times.each do
   print '.'
   post = SalesTool.create!(user_id: User.pluck(:id).sample, title: Faker::Lorem.word, content: Faker::Lorem.sentence, category_id: Category.where(type: 'SalestoolCategory').pluck(:id).sample,  media_type: Post::MediaType.sample, tag_list: tags.sample)
-  post.upload_files.create!(remote_image_url: 'http://epoch-152230.use1-2.nitrousbox.com/assets/logo.png')
+  post.upload_files.create!(image: File.open(File.join(Rails.root, 'app', 'assets', 'images', 'logo.png')))
 end
 
 %w( Expshare Activity Globalfood Meetingrecord Evaluation ).each do |klass|
-  50.times.each do
+  5.times.each do
     print '.'
     post_klass = klass + 'Post'
     categ_klass = klass + 'Category'
     post = post_klass.constantize.create!(user_id: User.pluck(:id).sample, title: Faker::Lorem.word, content: Faker::Lorem.sentence, category_id: Category.where(type: categ_klass).pluck(:id).sample, tag_list: tags.sample)
-    post.upload_files.create!(remote_image_url: 'http://epoch-152230.use1-2.nitrousbox.com/assets/logo.png')
+    post.upload_files.create!(image: File.open(File.join(Rails.root, 'app', 'assets', 'images', 'logo.png')))
   end
 end

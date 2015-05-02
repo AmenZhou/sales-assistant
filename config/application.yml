@@ -1,0 +1,13 @@
+default: &default
+  YELP_KEY: Fpar9-KlgeQubIIpt_3gWQ
+  YELP_SECRET: f8zlp6I4UofmGDvfc4vN5FWIsV4
+  YELP_TOKEN: uB9R3VUOKm4DiEZ_OQ3OcHqh3Ltfs_jT
+  YELP_TOKEN_SECRET: 9PUcPrLwMGXtUUM9wspZp_jUWF4
+  GOOGLE_STORAGE_PUBLIC_KEY: ''
+  GOOGLE_STORAGE_SECRET_KEY: ''
+
+production:
+  <<: *default
+
+development:
+  <<: *default
