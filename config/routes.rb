@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  namespace :yelp do
-    get '/', action: :index
-    get "export_data"
-    get 'search'
+  resources :yelp_grabs do
+    collection do
+      get "export_data"
+      get 'search'
+    end
   end
 
   require 'sidekiq/web'

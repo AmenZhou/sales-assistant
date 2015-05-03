@@ -1,5 +1,6 @@
-= link_to "Export Csv", yelp_export_data_path, class: "btn btn-primary"
-= simple_form_for @yelpdata_search, url: yelp_search_path, method: :get, html: {class: 'form-inline'} do |f|
+= link_to "Export Csv", export_data_yelp_grabs_path, class: "btn btn-primary"
+
+= simple_form_for @yelpdata_search, url: search_yelp_grabs_path, method: :get, html: {class: 'form-inline'} do |f|
   .row.inline-row
     = f.input_field :name, placeholder: t('yelp.name'), class: 'form-control'
     = f.input_field :genre, collection: YelpGrab.genres, prompt: t('yelp.select_genre'), class: 'form-control'
@@ -8,7 +9,9 @@
     = f.input_field :borough, collection: YelpGrab.boroughs, prompt: t('yelp.select_borough'), class: 'form-control'
     = f.input_field :zipcode, collection: YelpGrab.zipcodes, prompt: t('yelp.select_zipcode'), class: 'form-control'
     = f.input_field :city, collection: YelpGrab.cities, prompt: t('yelp.select_city'), class: 'form-control'
-    = f.submit t('yelp.search'), class: 'btn btn-default'
+    = f.submit t('yelp.search'), class: 'btn btn-primary'
+    = link_to t('yelp.clear'), yelp_grabs_path, class: 'btn btn-default'
+
 
 %table.table.table-hover
   %thead

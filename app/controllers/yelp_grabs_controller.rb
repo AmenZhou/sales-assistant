@@ -1,4 +1,4 @@
-class YelpController < ApplicationController
+class YelpGrabsController < ApplicationController
   def index
     @yelps = YelpGrab.order(updated_at: :desc).page(params[:page])
     @yelpdata_search = YelpdataSearch.new
