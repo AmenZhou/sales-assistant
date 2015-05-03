@@ -13,6 +13,22 @@ class YelpGrab < ActiveRecord::Base
     end
   end
 
+  def self.genres
+    pluck(:genre).compact.uniq.reject!(&:blank?)
+  end
+
+  def self.boroughs
+    pluck(:borough).compact.uniq
+  end
+
+  def self.zipcodes
+    pluck(:zipcode).compact.uniq.reject!(&:blank?)
+  end
+
+  def self.cities
+    pluck(:city).compact.uniq.reject!(&:blank?)
+  end
+
   def self.grab_all
     yelp_urls = [
            {

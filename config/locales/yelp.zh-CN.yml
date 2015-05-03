@@ -1,10 +1,17 @@
 zh-CN:
   yelp:
     name: 名称
-    genre: 风格
+    genre: 行業分類
     rating: 评分
     phone_number: 电话
     address: 地址
     city: 城市
     zipcode: 邮编
     wait_for_refresh: 请耐心等待抓取，完成后页面会自动刷新！
+    date: 日期
+    borough: 區
+    search: 搜索
+    select_genre: 選擇分類
+    select_borough: 請選擇Borough
+    select_zipcode: 請選擇郵編
+    select_city: 請選擇城市

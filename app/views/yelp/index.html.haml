@@ -1,4 +1,15 @@
 = link_to "Export Csv", yelp_export_data_path, class: "btn btn-primary"
+= simple_form_for @yelpdata_search, url: yelp_search_path, method: :get, html: {class: 'form-inline'} do |f|
+  .row.inline-row
+    = f.input_field :name, placeholder: t('yelp.name'), class: 'form-control'
+    = f.input_field :genre, collection: YelpGrab.genres, prompt: t('yelp.select_genre'), class: 'form-control'
+  .row.inline-row
+    = f.input_field :address, placeholder: t('yelp.address'), class: 'form-control'
+    = f.input_field :borough, collection: YelpGrab.boroughs, prompt: t('yelp.select_borough'), class: 'form-control'
+    = f.input_field :zipcode, collection: YelpGrab.zipcodes, prompt: t('yelp.select_zipcode'), class: 'form-control'
+    = f.input_field :city, collection: YelpGrab.cities, prompt: t('yelp.select_city'), class: 'form-control'
+    = f.submit t('yelp.search'), class: 'btn btn-default'
+
 %table.table.table-hover
   %thead
     %tr
@@ -7,7 +18,9 @@
       %th= t 'yelp.rating'
       %th= t 'yelp.phone_number'
       %th= t 'yelp.address'
+      %th= t 'yelp.date'
       %th= t 'yelp.city'
+      %th= t 'yelp.borough'
       %th= t 'yelp.zipcode'
   - @yelps.each_with_index do |y, i|
     %tbody
@@ -17,7 +30,8 @@
         %td.col-md-1= y.rating
         %td.col-md-2= y.phone_num
         %td.col-md-2= y.address
-        %td= y.updated_at
+        %td= y.updated_at.strftime('%b/%d/%Y %I:%M %P')
         %td.col-md-1= y.city
+        %td.col-md-1= y.borough
         %td.col-md-1= y.zipcode
 = will_paginate @yelps
