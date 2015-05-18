@@ -11,11 +11,11 @@ class YelpdataSearch
   def results
     search_res = YelpGrab.all
     search_res = search_res.where('lower(name) LIKE ?', "%#{name.downcase}%") if name
-    search_res = search_res.where(genre: genre) if genre
-    search_res = search_res.where('address LIKE ?', "%#{address}%") if address
+    search_res = search_res.text_search('genre', genre) if genre
+    search_res = search_res.text_search('address', address) if address
     search_res = search_res.where(borough: borough) if borough
     search_res = search_res.where(zipcode: zipcode) if zipcode
-    search_res = search_res.where(city: city) if city
+    search_res = search_res.text_search("city", city) if city
     search_res
   end
 end

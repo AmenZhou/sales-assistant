@@ -4,7 +4,9 @@ class YelpGrab < ActiveRecord::Base
   include ExportCsv
   include Scraper::YelpScraper
 
-  self.per_page = 10
+  self.per_page = 20
+
+  scope :text_search, ->(attr, value){ where("lower(#{attr}) like ?", "%#{value.downcase}%") }
 
   def self.csv_import path
     csv_parse(path).each do |params|
@@ -22,7 +24,7 @@ class YelpGrab < ActiveRecord::Base
   end
 
   def self.zipcodes
-    pluck(:zipcode).compact.uniq.reject!(&:blank?)
+    pluck(:zipcode).compact.uniq.reject!(&:blank?).sort
   end
 
   def self.cities

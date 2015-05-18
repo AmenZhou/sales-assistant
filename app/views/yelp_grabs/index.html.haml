@@ -3,12 +3,12 @@
 = simple_form_for @yelpdata_search, url: search_yelp_grabs_path, method: :get, html: {class: 'form-inline'} do |f|
   .row.inline-row
     = f.input_field :name, placeholder: t('yelp.name'), class: 'form-control'
-    = f.input_field :genre, collection: YelpGrab.genres, prompt: t('yelp.select_genre'), class: 'form-control'
+    = f.input_field :genre, placeholder: t('yelp.select_genre'), class: 'form-control'
   .row.inline-row
     = f.input_field :address, placeholder: t('yelp.address'), class: 'form-control'
     = f.input_field :borough, collection: YelpGrab.boroughs, prompt: t('yelp.select_borough'), class: 'form-control'
     = f.input_field :zipcode, collection: YelpGrab.zipcodes, prompt: t('yelp.select_zipcode'), class: 'form-control'
-    = f.input_field :city, collection: YelpGrab.cities, prompt: t('yelp.select_city'), class: 'form-control'
+    = f.input_field :city, placeholder: t('yelp.select_city'), class: 'form-control'
     = f.submit t('yelp.search'), class: 'btn btn-primary'
     = link_to t('yelp.clear'), yelp_grabs_path, class: 'btn btn-default'
 
@@ -28,13 +28,13 @@
   - @yelps.each_with_index do |y, i|
     %tbody
       %tr
-        %td.col-md-2= link_to "#{y.name}", y.url
-        %td.col-md-3= y.genre
-        %td.col-md-1= y.rating
-        %td.col-md-2= y.phone_num
-        %td.col-md-2= y.address
-        %td= y.updated_at.strftime('%b/%d/%Y %I:%M %P')
-        %td.col-md-1= y.city
-        %td.col-md-1= y.borough
-        %td.col-md-1= y.zipcode
+        %td= link_to "#{y.name}", y.url
+        %td{title: y.genre}= truncate(y.genre, length: 10)
+        %td= y.rating
+        %td= y.phone_num
+        %td{title: y.address}= truncate(y.address, length: 10)
+        %td= y.updated_at.strftime('%b/%d/%Y')
+        %td{title: y.city}= truncate(y.city, length: 10)
+        %td= y.borough
+        %td= y.zipcode
 = will_paginate @yelps
