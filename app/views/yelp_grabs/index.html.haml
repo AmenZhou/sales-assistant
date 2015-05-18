@@ -28,7 +28,7 @@
   - @yelps.each_with_index do |y, i|
     %tbody
       %tr
-        %td= link_to "#{y.name}", y.url
+        %td= link_to "#{y.name}", "https://www.yelp.com" + y.url, target: "_blank"
         %td{title: y.genre}= truncate(y.genre, length: 10)
         %td= y.rating
         %td= y.phone_num

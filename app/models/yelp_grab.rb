@@ -90,4 +90,8 @@ class YelpGrab < ActiveRecord::Base
       browser_grab(yelp_url[:url], borough: yelp_url[:borough], primary_industry: yelp_url[:primary_industry])
     end
   end
+
+  def rating
+    self[:rating][/\d+\.\d+/]
+  end
 end
