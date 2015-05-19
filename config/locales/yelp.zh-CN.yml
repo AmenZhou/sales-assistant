@@ -16,3 +16,13 @@ zh-CN:
     select_zipcode: 請選擇郵編
     select_city: 請選擇城市
     clear: 清除
+    edit: 編輯
+    description: 詳細描述
+    revenue: 公司收入
+    employees: 員工數量
+    ownership: 公司所有類型
+    primary_industry: 所屬領域
+    parent_name: 父公司
+    assign_to: 銷售人員分配
+    remark: 備註
+    lead_source: Lead Source

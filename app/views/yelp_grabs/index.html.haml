@@ -25,6 +25,7 @@
       %th= t 'yelp.city'
       %th= t 'yelp.borough'
       %th= t 'yelp.zipcode'
+      %th= t 'yelp.edit'
   - @yelps.each_with_index do |y, i|
     %tbody
       %tr
@@ -37,4 +38,5 @@
         %td{title: y.city}= truncate(y.city, length: 10)
         %td= y.borough
         %td= y.zipcode
+        %td= link_to t('yelp.edit'), edit_yelp_grab_path(y), class: 'btn btn-warning btn-xs'
 = will_paginate @yelps

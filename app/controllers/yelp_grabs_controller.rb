@@ -1,4 +1,6 @@
 class YelpGrabsController < ApplicationController
+  before_action :set_yelp
+
   def index
     @yelps = YelpGrab.order(updated_at: :desc).page(params[:page])
     @yelpdata_search = YelpdataSearch.new
@@ -15,7 +17,19 @@ class YelpGrabsController < ApplicationController
     render :index
   end
 
+  def edit
+   
+  end
+
+  def new
+    
+  end
+
   private
+
+  def set_yelp
+    @yelp = YelpGrab.find params[:id]
+  end
 
   def yelpdata_search_params
     params.require(:yelpdata_search).permit(:name, :genre, :address, :borough, :zipcode, :city)

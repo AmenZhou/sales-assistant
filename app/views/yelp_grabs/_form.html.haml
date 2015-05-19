@@ -1,0 +1,78 @@
+.jumbotron
+  .container
+    = simple_form_for @yelp, html: {class: "form-horizontal"} do |f|
+      .form-group
+        %label.control-label.col-md-2= t("yelp.assign_to")
+        .col-md-7
+          = f.input_field :assign_to, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.remark")
+        .col-md-7
+          = f.input_field :remark, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.name")
+        .col-md-7
+          = f.input_field :name, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.genre")
+        .col-md-7
+          = f.input_field :genre, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.rating")
+        .col-md-7
+          = f.input_field :rating, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.phone_number")
+        .col-md-7
+          = f.input_field :phone_num, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.address")
+        .col-md-7
+          = f.input_field :address, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.city")
+        .col-md-7
+          = f.input_field :city, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.borough")
+        .col-md-7
+          = f.input_field :borough, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.zipcode")
+        .col-md-7
+          = f.input_field :zipcode, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2 Yelp Url
+        .col-md-7
+          = f.input_field :url, class: 'form-control', readonly: true
+      .form-group
+        %label.control-label.col-md-2= t("yelp.description")
+        .col-md-7
+          = f.input_field :description, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.revenue")
+        .col-md-7
+          = f.input_field :revenue, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.employees")
+        .col-md-7
+          = f.input_field :employees, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.ownership")
+        .col-md-7
+          = f.input_field :ownership, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.primary_industry")
+        .col-md-7
+          = f.input_field :primary_industry, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.parent_name")
+        .col-md-7
+          = f.input_field :parent_name, class: 'form-control'
+      .form-group
+        %label.control-label.col-md-2= t("yelp.lead_source")
+        .col-md-7
+          = f.input_field :lead_source, class: 'form-control'
+      .form-group
+        .col-md-offset-2
+          = f.button :submit, 'Submit', class: "btn btn-default"
