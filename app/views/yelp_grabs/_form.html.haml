@@ -1,6 +1,8 @@
 .jumbotron
   .container
     = simple_form_for @yelp, html: {class: "form-horizontal"} do |f|
+      = render "shared/form_error_messages", object: @yelp
+
       .form-group
         %label.control-label.col-md-2= t("yelp.assign_to")
         .col-md-7

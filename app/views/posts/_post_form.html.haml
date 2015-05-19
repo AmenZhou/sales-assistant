@@ -11,6 +11,7 @@
 
       = render partial: 'shared/new_upload_files', locals: { upload_files: @post.try(:upload_files) }
       = simple_form_for @post, html: {id: 'post_form', class: "form-horizontal"} do |f|
+        = render "shared/form_error_messages", object: @post
         .form-group
           %label.control-label.col-md-2= t("board.title")
           .col-md-7
