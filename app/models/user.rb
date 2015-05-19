@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :rememberable, :trackable, :validatable
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
+  has_many :yelp_grabs, dependent: :destroy
 end

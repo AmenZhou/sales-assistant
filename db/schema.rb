@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326201237) do
+ActiveRecord::Schema.define(version: 20150519170214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,8 +107,10 @@ ActiveRecord::Schema.define(version: 20150326201237) do
     t.string   "parent_name"
     t.text     "address_remark"
     t.text     "remark"
-    t.string   "assign_to"
     t.string   "borough"
+    t.integer  "user_id"
   end
+
+  add_index "yelp_grabs", ["user_id"], name: "index_yelp_grabs_on_user_id", using: :btree
 
 end

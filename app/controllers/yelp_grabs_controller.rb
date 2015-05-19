@@ -1,5 +1,5 @@
 class YelpGrabsController < ApplicationController
-  before_action :set_yelp
+  before_action :set_yelp, only: [:edit, :new, :update]
 
   def index
     @yelps = YelpGrab.order(updated_at: :desc).page(params[:page])
@@ -25,6 +25,16 @@ class YelpGrabsController < ApplicationController
     
   end
 
+  def update
+    if @yelp.update(yelp_params)
+      flash[:notice] = "Yelp Record Update Successfully"
+      redirect_to action: :index
+    else
+      flash[:alert] = "Yelp Record Update Failed"
+      render :edit
+    end
+  end
+
   private
 
   def set_yelp
@@ -33,5 +43,12 @@ class YelpGrabsController < ApplicationController
 
   def yelpdata_search_params
     params.require(:yelpdata_search).permit(:name, :genre, :address, :borough, :zipcode, :city)
+  end
+
+  def yelp_params
+    params.require(:yelp_grab).permit(:name, :address, :phone_num, :yelp_id, :city, :zipcode, :street, :genre,
+                                      :rating, :account_name, :description, :revenue, :employees, :ownership,
+                                      :primary_industry, :state, :country, :lead_source, :parent_name, :address_remark,
+                                      :remark, :borough, :user_id)
   end
 end

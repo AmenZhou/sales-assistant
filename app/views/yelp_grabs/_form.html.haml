@@ -4,7 +4,7 @@
       .form-group
         %label.control-label.col-md-2= t("yelp.assign_to")
         .col-md-7
-          = f.input_field :assign_to, class: 'form-control'
+          = f.input_field :user_id, collection: User.all, value_method: :id, label_method: :username, prompt: "Select a sales man", class: 'form-control'
       .form-group
         %label.control-label.col-md-2= t("yelp.remark")
         .col-md-7

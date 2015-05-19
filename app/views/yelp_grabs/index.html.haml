@@ -17,6 +17,8 @@
   %thead
     %tr
       %th= t 'yelp.name'
+      %th= t 'yelp.assign_to'
+      %th= t 'yelp.remark'
       %th= t 'yelp.genre'
       %th= t 'yelp.rating'
       %th= t 'yelp.phone_number'
@@ -30,6 +32,8 @@
     %tbody
       %tr
         %td= link_to "#{y.name}", "https://www.yelp.com" + y.url, target: "_blank"
+        %td= y.username
+        %td{title: y.remark}= truncate(y.remark, length: 10)
         %td{title: y.genre}= truncate(y.genre, length: 10)
         %td= y.rating
         %td= y.phone_num

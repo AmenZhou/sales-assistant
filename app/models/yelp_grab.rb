@@ -4,6 +4,8 @@ class YelpGrab < ActiveRecord::Base
   include ExportCsv
   include Scraper::YelpScraper
 
+  belongs_to :user
+
   self.per_page = 20
 
   scope :text_search, ->(attr, value){ where("lower(#{attr}) like ?", "%#{value.downcase}%") }
@@ -93,5 +95,9 @@ class YelpGrab < ActiveRecord::Base
 
   def rating
     self[:rating][/\d+\.\d+/]
+  end
+
+  def username
+    user && user.username || "unassigned"
   end
 end
