@@ -1,6 +1,0 @@
-.row.normal-row
-  = link_to 'Category', polymorphic_path([:by_category, controller.controller_name], category: 'all'), class: 'btn btn-warning'
-  = link_to 'Tag', polymorphic_path([:by_tag, controller.controller_name], tag: 'all'), class: 'btn btn-warning'
-  = link_to 'Media Type', polymorphic_path([:by_media_type, controller.controller_name], media_type: 'all'), class: 'btn btn-warning'
-  = link_to 'Username', polymorphic_path([:by_username, controller.controller_name], username: 'all'), class: 'btn btn-warning'
-  = link_to 'Complex Condition', polymorphic_path([:by_complex_search, controller.controller_name]), class: 'btn btn-warning'

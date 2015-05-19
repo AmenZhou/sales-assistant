@@ -9,11 +9,13 @@
     = render 'search_links_head'
 .row
   = simple_form_for @post_search, url: polymorphic_path([:by_complex_search, controller.controller_name]), method: :get, html: {class: 'form-inline'} do |f|
-    = f.input_field :title, placeholder: 'Title'
-    = f.input_field :category_id, collection: @categories, include_blank: 'Select a Category ...'
-    = f.input_field :tag, placeholder: 'Tag'
-    = f.input_field :user_id, collection: User.all, label_method: :email, value_method: :id, include_blank: 'Select a User Email...'
-    = f.button :submit
+    = f.input_field :title, placeholder: t("board.title"), class: 'form-control'
+    = f.input_field :category_id, collection: @categories, include_blank: t("board.select_category"), class: 'form-control'
+    - if is_current_controller_sales_tool?
+      = f.input_field :media_type, collection: Post::MediaType, prompt: t("board.select_media_type"), class: 'form-control'
+    = f.input_field :tag, placeholder: t("board.tags"), class: 'form-control'
+    = f.input_field :user_id, collection: User.all, label_method: :email, value_method: :id, include_blank: t("board.select_user"), class: 'form-control'
+    = f.button :submit, t("board.new_search")
 
 #posts_list
   = render partial: 'posts_list', :posts => @posts

@@ -10,4 +10,8 @@ module PostsHelper
   def current_controller
     controller.controller_name
   end
+
+  def is_current_controller_sales_tool?
+    controller.controller_name == "sales_tools"
+  end
 end
