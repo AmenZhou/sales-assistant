@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:AmenZhou/sales-assistant.git'
  ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app_name
- set :deploy_to, '/home/action/workspace/www/sales-assistant'
+ set :deploy_to, '/home/epoch/apps/sales-assistant'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -33,8 +33,18 @@ set :repo_url, 'git@github.com:AmenZhou/sales-assistant.git'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-set :chruby_ruby, 'ruby-2.2.0'
-set :chruby_exec, '/home/action/.parts/bin/chruby-exec'
+
+####rbenv####
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, '2.2.o'
+# in case you want to set ruby version from the file:
+# set :rbenv_ruby, File.read('.ruby-version').strip
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all # default value
+
+#set :chruby_ruby, 'ruby-2.2.0'
+#set :chruby_exec, '/home/action/.parts/bin/chruby-exec'
 set :rails_env, 'production'
 set :puma_config_path, -> { File.join(current_path, "config", "puma.rb") }
 set :puma_pid,  -> { File.join(shared_path, "tmp", "pids", "puma.sales-assistant.pid") }
