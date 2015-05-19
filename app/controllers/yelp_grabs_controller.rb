@@ -1,5 +1,5 @@
 class YelpGrabsController < ApplicationController
-  before_action :set_yelp, only: [:edit, :new, :update]
+  before_action :set_yelp, only: [:edit, :update]
 
   def index
     @yelps = YelpGrab.order(updated_at: :desc).page(params[:page])
@@ -22,15 +22,27 @@ class YelpGrabsController < ApplicationController
   end
 
   def new
-    
+    @yelp = YelpGrab.new
+  end
+
+  def create
+    @yelp = YelpGrab.new(yelp_params)
+
+    if @yelp.save
+      flash[:notice] = t "yelp.created_success"
+      redirect_to action: :index
+    else
+      flash[:alert] = t "yelp.created_failed"
+      render :edit
+    end
   end
 
   def update
     if @yelp.update(yelp_params)
-      flash[:notice] = "Yelp Record Update Successfully"
+      flash[:notice] = t "yelp.updated_success"
       redirect_to action: :index
     else
-      flash[:alert] = "Yelp Record Update Failed"
+      flash[:alert] = t "yelp.updated_failed"
       render :edit
     end
   end

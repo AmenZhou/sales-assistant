@@ -6,6 +6,9 @@ class YelpGrab < ActiveRecord::Base
 
   belongs_to :user
 
+  validates_presence_of :name, :address
+  validates_uniqueness_of :name, :address
+
   self.per_page = 20
 
   scope :text_search, ->(attr, value){ where("lower(#{attr}) like ?", "%#{value.downcase}%") }
@@ -94,10 +97,14 @@ class YelpGrab < ActiveRecord::Base
   end
 
   def rating
-    self[:rating][/\d+\.\d+/]
+    self[:rating] && self[:rating][/\d+\.\d+/]
   end
 
   def username
     user && user.username || "unassigned"
+  end
+
+  def url
+    self[:url] && "https://www.yelp.com" + self[:url]
   end
 end

@@ -26,3 +26,8 @@ zh-CN:
     assign_to: 銷售人員分配
     remark: 備註
     lead_source: Lead Source
+    created_success: 商家信息創建成功
+    updated_success: 商家信息更新成功
+    created_failed: 商家信息創建失敗
+    updated_failed: 商家信息更新失敗
+    new: 創建商家信息
