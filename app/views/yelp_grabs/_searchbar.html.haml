@@ -1,0 +1,12 @@
+= simple_form_for @yelpdata_search, url: search_yelp_grabs_path, method: :get, html: {class: 'form-inline'} do |f|
+  .row.inline-row
+    = f.input_field :name, placeholder: t('yelp.name'), class: 'form-control'
+    = f.input_field :genre, placeholder: t('yelp.select_genre'), class: 'form-control'
+    = f.input_field :user_id, collection: User.all, value_method: :id, label_method: :username, prompt: t('yelp.select_user'), class: 'form-control'
+  .row.inline-row
+    = f.input_field :address, placeholder: t('yelp.address'), class: 'form-control'
+    = f.input_field :borough, collection: YelpGrab.boroughs, prompt: t('yelp.select_borough'), class: 'form-control'
+    = f.input_field :zipcode, collection: YelpGrab.zipcodes, prompt: t('yelp.select_zipcode'), class: 'form-control'
+    = f.input_field :city, placeholder: t('yelp.select_city'), class: 'form-control'
+    = f.submit t('yelp.search'), class: 'btn btn-primary'
+    = link_to t('yelp.clear'), yelp_grabs_path, class: 'btn btn-default'

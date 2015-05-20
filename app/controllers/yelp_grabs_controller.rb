@@ -54,7 +54,7 @@ class YelpGrabsController < ApplicationController
   end
 
   def yelpdata_search_params
-    params.require(:yelpdata_search).permit(:name, :genre, :address, :borough, :zipcode, :city)
+    params.require(:yelpdata_search).permit(:name, :genre, :address, :borough, :zipcode, :city, :user_id)
   end
 
   def yelp_params

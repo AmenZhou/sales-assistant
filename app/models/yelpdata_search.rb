@@ -1,5 +1,5 @@
 class YelpdataSearch
-  attr_accessor :name, :genre, :borough, :city, :zipcode, :address
+  attr_accessor :name, :genre, :borough, :city, :zipcode, :address, :user_id
   include ActiveModel::Model
 
   def initialize search_params = {}
@@ -16,6 +16,7 @@ class YelpdataSearch
     search_res = search_res.where(borough: borough) if borough
     search_res = search_res.where(zipcode: zipcode) if zipcode
     search_res = search_res.text_search("city", city) if city
+    search_res = search_res.where(user_id: user_id) if user_id
     search_res
   end
 end

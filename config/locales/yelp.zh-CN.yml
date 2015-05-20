@@ -31,3 +31,4 @@ zh-CN:
     created_failed: 商家信息創建失敗
     updated_failed: 商家信息更新失敗
     new: 創建商家信息
+    select_user: 請選擇用戶
