@@ -2,7 +2,6 @@
 lock '3.3.5'
 
 set :application, 'sales-assistant'
-set :repo_url, 'git@github.com:AmenZhou/sales-assistant.git'
 
 # Default branch is :master
  ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -23,7 +22,7 @@ set :repo_url, 'git@github.com:AmenZhou/sales-assistant.git'
 # set :pty, true
 
 # Default value for :linked_files is []
- set :linked_files, fetch(:linked_files, []).push('config/database.yml' , 'config/local_env.yml')
+ set :linked_files, fetch(:linked_files, []).push('config/database.yml' , 'config/application.yml')
 
 # Default value for linked_dirs is []
  set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
@@ -36,7 +35,7 @@ set :repo_url, 'git@github.com:AmenZhou/sales-assistant.git'
 
 ####rbenv####
 set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.2.o'
+set :rbenv_ruby, '2.2.0'
 # in case you want to set ruby version from the file:
 # set :rbenv_ruby, File.read('.ruby-version').strip
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"

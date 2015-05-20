@@ -1,6 +1,6 @@
-user = "action"
+user = "epoch"
 application = "sales-assistant"
-path = "/home/#{user}/workspace/www/sales-assistant/shared"
+path = "/home/#{user}/apps/#{application}/shared"
  
 port 5000
 threads 0, 4
