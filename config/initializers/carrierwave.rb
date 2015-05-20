@@ -13,7 +13,7 @@ else
     #config.fog_directory = 'sa_storage'
   #end
   CarrierWave.configure do |config|
-    config.fog_provider = 'fog/aws'                        # required
+    config.storage = :fog
     config.fog_credentials = {
       provider:              'AWS',                        # required
       aws_access_key_id:     ENV['S3_ACCESS_KEY'],                        # required
