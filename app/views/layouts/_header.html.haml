@@ -16,7 +16,14 @@
               %input.form-control.col-md-6{:name => "query", :placeholder => "#{t 'nav.search'}", :type => "text"}/
               %button.btn.btn-default{:type => "submit"}= t 'nav.submit'
           %ul.nav.navbar-nav.navbar-right
-            %li= link_to t('nav.grab_data'), yelp_grabs_path
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :role => "button"}
+                = t('nav.grab_data')
+                %span.caret
+              %ul.dropdown-menu{:role => "menu"}
+                %li{:role => "presentation"}
+                  = link_to 'Yelp', yelp_grabs_path
+
             %li.dropdown{:role => "presentation"}
               %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
                 = t 'nav.boards'

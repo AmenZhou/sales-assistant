@@ -6,7 +6,8 @@
       %th= t('table.category')
       %th= t('table.author')
       %th= t('table.updated_time')
-      %th= t('table.media_type')
+      - if is_current_controller_sales_tool?
+        %th= t('table.media_type')
       %th= t('table.tags')
       %th
       %th
@@ -21,10 +22,8 @@
           %td
         %td= link_to post.author, polymorphic_path([:by_username, post.class], username: post.user.try(:email))
         %td.time-tag= post.updated_at.strftime("%R %D")
-        - if post.media_type
+        - if is_current_controller_sales_tool?
           %td= link_to post.media_type, polymorphic_path([:by_media_type, post.class], media_type: post.media_type || '')
-        - else
-          %td
         %td= raw post.tag_list.map{|t| link_to t, polymorphic_path([:by_tag, post.class], tag: t)}.join(', ')
         - if post.user.try(:email) == current_user.email || current_user.admin?
           .btn-group

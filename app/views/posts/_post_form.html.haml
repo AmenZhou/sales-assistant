@@ -19,12 +19,12 @@
         .form-group
           %label.control-label.col-md-2= t("board.category")
           .col-md-7
-            = f.input_field :category, collection: @categories, prompt: 'Select a category', class: "form-control"
+            = f.input_field :category_id, collection: @categories, value_method: :id, label_method: :name, prompt: 'Select a category', class: "form-control"
         .form-group
           %label.control-label.col-md-2= t("board.content")
           .col-md-7
             = f.input_field :content, input_html: { maxlength: 1000 }, class: "form-control"
-        - if current_controller == "sales_tools_controller"
+        - if is_current_controller_sales_tool?
           .form-group
             %label.control-label.col-md-2= t("board.media_type")
             .col-md-7

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy, :show]
   before_action :check_authorization
-  before_action :set_categories, only: [:index, :create, :by_category, :by_complex_search, :new]
+  before_action :set_categories, only: [:index, :create, :by_category, :by_complex_search, :new, :edit]
 
   def index
     if params[:post_search]
