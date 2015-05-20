@@ -45,5 +45,9 @@
         %td{title: y.city}= truncate(y.city, length: 10)
         %td= y.borough
         %td= y.zipcode
-        %td= link_to t('yelp.edit'), edit_yelp_grab_path(y), class: 'btn btn-warning btn-xs'
+        - if current_user == y.user || current_user.admin?
+          %td= link_to t('yelp.edit'), edit_yelp_grab_path(y), class: 'btn btn-warning btn-xs'
+        - else
+          %td= link_to t('yelp.edit'), edit_yelp_grab_path(y), class: 'btn btn-warning btn-xs', disabled: true
+
 = will_paginate @yelps

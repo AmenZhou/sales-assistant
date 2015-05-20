@@ -1,7 +1,7 @@
 .row
-  .col-md-5
-    = link_to 'Home', root_path, class: 'btn btn-default'
-  .col-md-3
+  = render "menu"
+.row
+  .col-md-offset-5
     %h3= I18n.t("board.#{controller.controller_name}")
 
 
