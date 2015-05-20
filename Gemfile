@@ -39,7 +39,7 @@ gem 'table-for'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'arel'
-#gem "fog"
+gem "fog", "~> 1.20"
 gem "fog-aws"
 gem 'remotipart', '~> 1.2'
 gem 'acts-as-taggable-on'
